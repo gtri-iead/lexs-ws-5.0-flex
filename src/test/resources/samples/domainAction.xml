@@ -1,0 +1,29 @@
+<lexsde:domainAction>
+    <lexs:DomainActionMessage>
+        <lexsmeta:MessageMetadata>
+            <lexsmeta:LEXSVersionNumberText>5.0</lexsmeta:LEXSVersionNumberText>
+            <lexsmeta:MessageDateTime>2001-12-17T09:30:47Z</lexsmeta:MessageDateTime>
+            <lexsmeta:MessageIdentifier>uuid:ab19b2f2-d64c-44c6-ab18-61dde2f25e61</lexsmeta:MessageIdentifier>
+            <lexsmeta:DataSensitivityText>SBU</lexsmeta:DataSensitivityText>
+            <lexs:MessageOriginIdentifier>
+                <j:OrganizationORIIdentification>
+                    <nc:IdentificationID>ATL123456</nc:IdentificationID>
+                </j:OrganizationORIIdentification>
+                <nc:OrganizationName>ATLANTA PD</nc:OrganizationName>
+                <lexs:SystemID>APD123</lexs:SystemID>
+            </lexs:MessageOriginIdentifier>
+        </lexsmeta:MessageMetadata>
+        <lexs:DataSubmitterIdentifier>
+            <j:OrganizationORIIdentification>
+                <nc:IdentificationID>ATL123456</nc:IdentificationID>
+            </j:OrganizationORIIdentification>
+            <nc:OrganizationName>ATLANTA PD</nc:OrganizationName>
+            <lexs:SystemID>APD123</lexs:SystemID>
+        </lexs:DataSubmitterIdentifier>
+        <lexs:DomainActionMessageDomainAttribute>
+            <lexslib:AttributeName>TestAttribute</lexslib:AttributeName>
+            <lexslib:AttributeValueText>Test123</lexslib:AttributeValueText>
+            <lexslib:DomainName>TEST</lexslib:DomainName>
+        </lexs:DomainActionMessageDomainAttribute>
+    </lexs:DomainActionMessage>
+</lexsde:domainAction>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document: $Id: lexs-domain-exchange.xsd 48185 2016-09-08 22:57:09Z ys34 $
+    Namespace     : xmlns:lexsde="http://lexs.justice.gov/domainexchange/5.0"
+    Description   : LEXS Domain Exchange Message Format Schema
+-->
+<xsd:schema 
+    xmlns:lexsde="http://lexs.justice.gov/domainexchange/5.0"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://lexs.justice.gov/domainexchange/5.0"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="TBD">
+        
+    <xsd:annotation>
+        <xsd:documentation>LEXS Domain Exchange Message Format Schema</xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="domainAction" type="lexsde:domainActionType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS domain publish method.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="domainActionType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS domain action method.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="domainRequest" type="lexsde:domainRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS domain specific request.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="domainRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS domain specific request.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="domainResponse" type="lexsde:domainResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS response to the domain specific request.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="domainResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS response to the domain specific request.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

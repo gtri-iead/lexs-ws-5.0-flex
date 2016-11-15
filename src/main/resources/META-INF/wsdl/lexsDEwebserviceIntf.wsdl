@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Document: $Id: lexsDEwebserviceIntf.wsdl 48333 2016-11-11 21:16:44Z es130 $
+        URL     : $URL: https://iead.ittl.gtri.org/svn/all/LEXS50/spec/trunk/sandbox/lexs-ws-5.0-flex/src/main/resources/META-INF/wsdl/lexsDEwebserviceIntf.wsdl $
+	Description   : Types, Messages, Services, Ports, and Bindings template 
+                        definitions for LEXS 5.0 Domain Exchange Web Service.
+                        This WSDL files are served by the WS server
+-->
+<wsdl:definitions
+    targetNamespace="http://lexs.justice.gov/domainexchange/5.0/ws"
+    xmlns:tns="http://lexs.justice.gov/domainexchange/5.0/ws"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:lexsde="http://lexs.justice.gov/domainexchange/5.0"
+    xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+    xmlns:lexsfaults="http://lexs.justice.gov/faults/5.0"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+        
+    <wsdl:import 
+        namespace="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp"
+        location="SIP_GFIPM_S2S_1.0/wsaEnabledWSPPolicy.wsdl"/>
+    
+    <wsdl:types>
+        <!--
+        Note: in published WSDL following line present
+                <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                However to enable @SchemaValidation feature on the endpoint we
+                have to remove xmlns:xsd declaration.
+        -->
+        <xsd:schema>
+            <xsd:import
+                namespace="http://lexs.justice.gov/domainexchange/5.0"
+                schemaLocation="information/extension-lexs/lexs-domain-exchange/5.0/lexs-domain-exchange.xsd" />
+            <xsd:import
+                namespace="http://lexs.justice.gov/meta/5.0"
+                schemaLocation="information/extension-lexs/lexs-meta/5.0/lexs-meta.xsd" />            
+            <xsd:import
+                namespace="http://lexs.justice.gov/faults/5.0"
+                schemaLocation="information/extension-lexs/lexs-faults/5.0/lexs-faults.xsd" />
+        </xsd:schema>
+    </wsdl:types>
+    
+    <wsdl:message name="domainAction">
+        <wsdl:part name="parameters" element="lexsde:domainAction" />
+    </wsdl:message>
+    
+    <wsdl:message name="domainExchangeRequest">
+        <wsdl:part name="parameters" element="lexsde:domainRequest" />
+    </wsdl:message>
+
+    <wsdl:message name="domainExchangeResponse">
+        <wsdl:part name="parameters" element="lexsde:domainResponse" />
+    </wsdl:message>
+
+    <!--<wsdl:message name="messageMetadata">-->
+        <!--<wsdl:part name="messageMetadata" element="lexsmeta:MessageMetadata"/>-->
+    <!--</wsdl:message>-->
+            
+    <wsdl:message name="businessRuleNotMetFault">
+        <wsdl:part name="parameters" element="lexsfaults:BusinessRuleNotMetFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="invalidRequestFault">
+        <wsdl:part name="parameters" element="lexsfaults:InvalidRequestFault"/>
+    </wsdl:message>
+        	
+    <wsdl:message name="networkFailureFault">
+        <wsdl:part name="parameters" element="lexsfaults:NetworkFailureFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="otherErrorFault">
+        <wsdl:part name="parameters" element="lexsfaults:OtherErrorFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="timeoutFault">
+        <wsdl:part name="parameters" element="lexsfaults:TimeoutFault"/>
+    </wsdl:message>
+
+    <!-- Port Types -->        
+    <wsdl:portType name="DEWebServicePortType">
+    
+        <wsdl:operation name="domainAction">
+            <wsdl:input name="domainAction" 
+                        message="tns:domainAction"
+                        wsaw:Action="http://lexs.justice.gov/domainexchange/5.0/domainAction"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="domainExchange">
+            <wsdl:input name="domainExchangeRequest" 
+                        message="tns:domainExchangeRequest" 
+                        wsaw:Action="http://lexs.justice.gov/domainexchange/5.0/domainExchangeRequest"/>
+            <wsdl:output name="domainExchangeResponse" 
+                         message="tns:domainExchangeResponse" 
+                         wsaw:Action="http://lexs.justice.gov/domainexchange/5.0/domainExchangeResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>
+        
+    </wsdl:portType>
+    
+    <wsdl:binding 
+        name="DEWebServiceSoapBinding"
+        type="tns:DEWebServicePortType">
+        <wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:BindingPolicy"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        
+        <wsdl:operation name="domainAction">
+            <soap:operation soapAction="http://lexs.justice.gov/domainexchange/5.0/domainAction"/>
+            <wsdl:input name="domainAction">
+                <soap:body use="literal" />
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+        </wsdl:operation>
+        
+        <wsdl:operation name="domainExchange">
+            <soap:operation soapAction="http://lexs.justice.gov/domainexchange/5.0/domainExchangeRequest"/>
+            <wsdl:input name="domainExchangeRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="domainExchangeResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+    </wsdl:binding>
+    
+</wsdl:definitions>

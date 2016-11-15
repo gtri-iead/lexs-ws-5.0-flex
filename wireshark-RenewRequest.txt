@@ -1,0 +1,111 @@
+Frame 2688: 1790 bytes on wire (14320 bits), 897 bytes captured (7176 bits) on interface 0
+Null/Loopback
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+Transmission Control Protocol, Src Port: 52960, Dst Port: 8080, Seq: 1784, Ack: 1, Len: 853
+[3 Reassembled TCP Segments (2636 bytes): #2685(323), #2687(1460), #2688(853)]
+Hypertext Transfer Protocol
+    POST /lexs-ws-jaxws-service/services/snsm HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): POST /lexs-ws-jaxws-service/services/snsm HTTP/1.1\r\n]
+        Request Method: POST
+        Request URI: /lexs-ws-jaxws-service/services/snsm
+        Request Version: HTTP/1.1
+    Accept-Encoding: gzip,deflate\r\n
+    Content-Type: text/xml;charset=UTF-8\r\n
+    SOAPAction: "http://docs.oasis-open.org/wsn/bw-2/SubscriptionManager/RenewRequest"\r\n
+    Content-Length: 2313\r\n
+        [Content length: 2313]
+    Host: localhost:8080\r\n
+    Connection: Keep-Alive\r\n
+    User-Agent: Apache-HttpClient/4.1.1 (java 1.5)\r\n
+    \r\n
+    [Full request URI: http://localhost:8080/lexs-ws-jaxws-service/services/snsm]
+    [HTTP request 1/1]
+    [Response in frame: 2695]
+    File Data: 2313 bytes
+eXtensible Markup Language
+    <soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:lexs="http://lexs.justice.gov/lexs/5.0"
+        xmlns:lexssn="http://lexs.justice.gov/subscribenotify/5.0"
+        xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/"
+        xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+        xmlns:j="http://release.niem.gov/niem/domains/jxdm/5.2/">
+        <soapenv:Header
+            xmlns:wsa="http://www.w3.org/2005/08/addressing">
+            <wsa:Action>
+                http://docs.oasis-open.org/wsn/bw-2/SubscriptionManager/RenewRequest
+                </wsa:Action>
+            <wsa:ReplyTo>
+                <wsa:Address>
+                    http://www.w3.org/2005/08/addressing/anonymous
+                    </wsa:Address>
+                </wsa:ReplyTo>
+            <wsa:MessageID>
+                uuid:099168d6-5176-4347-8c45-776a5a592cc8
+                </wsa:MessageID>
+            <wsa:To>
+                http://localhost:8080/lexs-ws-jaxws-service/services/snsm
+                </wsa:To>
+            </soapenv:Header>
+        <soapenv:Body>
+            <wsnt:Renew>
+                <wsnt:TerminationTime>
+                    2001-12-17T09:30:47Z
+                    </wsnt:TerminationTime>
+                <lexssn:SubscriptionReferenceAddressURI>
+                    urn:uuid:21363e0d-2645-4eb7-8afd-001001001001
+                    </lexssn:SubscriptionReferenceAddressURI>
+                <lexsmeta:MessageMetadata>
+                    <lexsmeta:LEXSVersionNumberText>
+                        5.0
+                        </lexsmeta:LEXSVersionNumberText>
+                    <lexsmeta:MessageDateTime>
+                        2001-12-17T09:30:47Z
+                        </lexsmeta:MessageDateTime>
+                    <lexsmeta:MessageIdentifier>
+                        uuid:ab19b2f2-d64c-44c6-ab18-61dde2f25e61
+                        </lexsmeta:MessageIdentifier>
+                    <lexsmeta:DataSensitivityText>
+                        SBU
+                        </lexsmeta:DataSensitivityText>
+                    <lexs:MessageOriginIdentifier>
+                        <j:OrganizationORIIdentification>
+                            <nc:IdentificationID>
+                                ATL123456
+                                </nc:IdentificationID>
+                            </j:OrganizationORIIdentification>
+                        <nc:OrganizationName>
+                            ATLANTA PD
+                            </nc:OrganizationName>
+                        <lexs:SystemID>
+                            APD123
+                            </lexs:SystemID>
+                        </lexs:MessageOriginIdentifier>
+                    </lexsmeta:MessageMetadata>
+                <lexs:UserAssertion>
+                    <lexs:UserID>
+                        GB123
+                        </lexs:UserID>
+                    <nc:PersonGivenName>
+                        George
+                        </nc:PersonGivenName>
+                    <nc:PersonSurName>
+                        Burdell
+                        </nc:PersonSurName>
+                    <nc:ContactEmailID>
+                        burdell@bpd.gov
+                        </nc:ContactEmailID>
+                    <nc:OrganizationName>
+                        BUFFORD PD
+                        </nc:OrganizationName>
+                    <j:OrganizationORIIdentification>
+                        <nc:IdentificationID>
+                            BPD123456
+                            </nc:IdentificationID>
+                        </j:OrganizationORIIdentification>
+                    </lexs:UserAssertion>
+                </wsnt:Renew>
+            </soapenv:Body>
+        </soapenv:Envelope>

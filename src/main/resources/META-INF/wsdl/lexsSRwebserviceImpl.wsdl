@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document: $Id: lexsSRwebserviceImpl.wsdl 48170 2016-08-25 06:17:39Z ys34 $
+    Description   : Service Endpoint template definition for LEXS 5.0 Search/Retrieve Web Service
+-->
+<wsdl:definitions
+    targetNamespace="http://lexs.justice.gov/searchretrieve/5.0/ws" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:tns="http://lexs.justice.gov/searchretrieve/5.0/ws" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+        
+    <wsdl:import 
+        namespace="http://lexs.justice.gov/searchretrieve/5.0/ws" 
+        location="lexsSRwebserviceIntf.wsdl"/>
+    
+    <wsdl:service name="SRWebService">
+        <wsdl:port name="SRWebServicePort" binding="tns:SRWebServiceSoapBinding">
+            <soap:address location="${TBD}"/>
+        </wsdl:port>
+    </wsdl:service>
+    
+</wsdl:definitions>

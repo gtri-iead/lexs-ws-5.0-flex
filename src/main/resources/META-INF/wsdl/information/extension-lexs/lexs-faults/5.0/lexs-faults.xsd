@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document      : $Id: lexs-faults.xsd 48229 2016-09-13 20:31:49Z es130 $
+    Namespace     : xmlns:lexsfaults="http://lexs.justice.gov/faults/5.0"
+    Description   : LEXS Faults Schema
+-->
+<xsd:schema
+    targetNamespace="http://lexs.justice.gov/faults/5.0"
+    xmlns:wsrf-bf="http://docs.oasis-open.org/wsrf/bf-2"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+    xmlns:lexsfaults="http://lexs.justice.gov/faults/5.0"
+    xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/"
+    version="TBD">
+
+    <xsd:import
+        namespace="http://docs.oasis-open.org/wsrf/bf-2"
+        schemaLocation="../../../external/oasis-open.org/wsrf/bf-2/bf-2.xsd"/>
+        
+    <xsd:import 
+        namespace="http://lexs.justice.gov/meta/5.0" 
+        schemaLocation="../../lexs-meta/5.0/lexs-meta.xsd"/>
+
+    <xsd:complexType name="BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>BUSINESS_RULE Error codes have been removed from advisory category, now we need add business rule that checks lexs:ResultCode is equal to Error and no advisory element is used. BaseFault now has the description of the error, so we don't need advisory category code and text element here.</xsd:appinfo>
+            <xsd:documentation>A data type for a base fault.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="wsrf-bf:BaseFaultType">
+                <xsd:sequence>
+                    <xsd:element ref="lexsmeta:MessageMetadata" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="NetworkFailureFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:documentation>A network failure fault (e.g. cannot contact service provider).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="InvalidRequestFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:documentation>An invalid request fault (service provider could not process incoming request).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="TimeoutFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:documentation>A timeout fault (service provider did not respond in allotted time).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="BusinessRuleNotMetFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:documentation>A business rules not met fault (e.g. service provider requires SSN in query, but query did not provide SSN value).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="NextPreviousNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>A next or previous not supported fault.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="StructuredSearchNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>A structured search not supported fault (structured search submitted, but service provider or data source only supports unstructured searches).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="UnstructuredSearchNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>An unstructured search not supported fault (unstructured search submitted, but service provider or data source only supports structured searches).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="FuzzyMatchNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>A fuzzy match not supported fault.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="WildcardNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>A wildcards not supported fault (service provider does not support wildcard queries in unstructured searches).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="LogicalOperatorsNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>A logical operators not supported fault (service provider does not support logical AND/OR queries in unstructured searches).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="PhrasesNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>A phrases not supported fault (service provider does not support exact phrase queries in unstructured searches).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="InvalidAttachmentRequestedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>An invalid attachment requested fault (service provider received request for invalid attachment).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="InvalidDataItemRequestedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>An invalid Data Item requested fault (service provider received getDataItem request for Data Item that does not exist).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="InvalidEntityRequestedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>An invalid Entity requested fault (service provider received getEntity request for Entity that does not exist).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="QueryObjectNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>An unsupported query object fault (e.g. query was on vehicle and service provider doesn't handle vehicles).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="QueryFieldNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>An unsupported query field fault (e.g. query was on SSN and service provider doesn't include SSN).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="QueryOperatorNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>An unsupported query operator fault (e.g. query included a wildcard and service provider only does exact).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="MultipleValuesNotSupportedFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:appinfo>SRONLY</xsd:appinfo>
+            <xsd:documentation>A multiple values not supported fault (search query included multiple values for a search field, but service provider only supports single values).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="OtherErrorFault" type="lexsfaults:BaseFaultType">
+        <xsd:annotation>
+            <xsd:documentation>An other error fault (for errors that don't fall into categories above).</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+</xsd:schema>

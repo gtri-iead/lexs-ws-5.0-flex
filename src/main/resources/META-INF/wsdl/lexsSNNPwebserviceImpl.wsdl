@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document: $Id: lexsSNNPwebserviceImpl.wsdl 48210 2016-09-12 06:01:23Z ys34 $
+    Description   : Service Endpoint definition template for LEXS 5.0 Subscribe/Notifiy Notification Producer Web Service
+-->       
+<wsdl:definitions name="WS-BaseNotification"
+    targetNamespace="http://docs.oasis-open.org/wsn/bw-2"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="http://docs.oasis-open.org/wsn/bw-2"
+    xmlns:wsntw="http://docs.oasis-open.org/wsn/bw-2"
+    xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+        
+    <wsdl:import 
+        namespace="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp"
+        location="SIP_GFIPM_S2S_1.0/gfipmS2SsipConsumerProviderWSPPolicy.wsdl"/>
+          
+    <wsdl:import 
+        namespace="http://docs.oasis-open.org/wsn/bw-2" 
+        location="bw-2.wsdl"/>
+    
+    <!-- ========= NotificationProducer Binding Definition =========== -->
+    <wsdl:binding 
+        name="SNNPWebServiceSoapBinding"
+        type="tns:NotificationProducer">
+        <wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:BindingPolicy"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+                
+        <wsdl:operation name="Subscribe">
+            
+            <soap:operation soapAction="http://docs.oasis-open.org/wsn/bw-2/NotificationProducer/SubscribeRequest"/>
+            
+            <wsdl:input name="SubscribeRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>
+            </wsdl:input>
+            
+            <wsdl:output name="SubscribeResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>
+            </wsdl:output>
+            
+            <wsdl:fault name="InvalidFilterFault">
+                <soap:fault name="InvalidFilterFault" use="literal"/>
+            </wsdl:fault>
+            
+            <wsdl:fault name="TopicExpressionDialectUnknownFault">
+                <soap:fault name="TopicExpressionDialectUnknownFault" use="literal"/>
+            </wsdl:fault>
+            
+            <wsdl:fault name="InvalidTopicExpressionFault">
+                <soap:fault name="InvalidTopicExpressionFault" use="literal"/>
+            </wsdl:fault>
+
+            <wsdl:fault name="TopicNotSupportedFault">
+                <soap:fault name="TopicNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            
+            <wsdl:fault name="UnacceptableInitialTerminationTimeFault">
+                <soap:fault name="UnacceptableInitialTerminationTimeFault" use="literal"/>
+            </wsdl:fault>
+            
+            <wsdl:fault name="SubscribeCreationFailedFault">
+                <soap:fault name="SubscribeCreationFailedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+    </wsdl:binding>
+    
+    
+    <wsdl:service name="SNNPWebService">
+        <wsdl:port name="SNNPWebServicePort" binding="tns:SNNPWebServiceSoapBinding">
+            <soap:address location="${TBD}"/>
+        </wsdl:port>
+    </wsdl:service>
+    
+</wsdl:definitions>

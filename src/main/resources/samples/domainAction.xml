@@ -1,0 +1,16 @@
+<lexsde:domainAction xmlns:lexs="http://lexs.justice.gov/lexs/5.0" xmlns:lexslib="http://lexs.justice.gov/library/5.0" xmlns:lexsde="http://lexs.justice.gov/domainexchange/5.0" xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/5.2/">
+    <lexs:DomainActionMessage>
+        <lexs:DataSubmitterIdentifier>
+            <j:OrganizationORIIdentification>
+                <nc:IdentificationID>ATL123456</nc:IdentificationID>
+            </j:OrganizationORIIdentification>
+            <nc:OrganizationName>ATLANTA PD</nc:OrganizationName>
+            <lexs:SystemID>APD123</lexs:SystemID>
+        </lexs:DataSubmitterIdentifier>
+        <lexs:DomainActionMessageDomainAttribute>
+            <lexslib:AttributeName>TestAttribute</lexslib:AttributeName>
+            <lexslib:AttributeValueText>Test123</lexslib:AttributeValueText>
+            <lexslib:DomainName>TEST</lexslib:DomainName>
+        </lexs:DomainActionMessageDomainAttribute>
+    </lexs:DomainActionMessage>
+</lexsde:domainAction>

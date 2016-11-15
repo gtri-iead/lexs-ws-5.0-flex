@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Document: $Id: lexsPDwebserviceIntf.wsdl 48170 2016-08-25 06:17:39Z ys34 $
+	Description   : Types, Messages, Services, Ports, and Bindings template definitions for LEXS 5.0 Publish/Discover Web Service
+-->
+<wsdl:definitions
+    targetNamespace="http://lexs.justice.gov/publishdiscover/5.0/ws"
+    xmlns:tns="http://lexs.justice.gov/publishdiscover/5.0/ws"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:lexspd="http://lexs.justice.gov/publishdiscover/5.0"
+    xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+    xmlns:lexsfaults="http://lexs.justice.gov/faults/5.0"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <wsdl:import
+        namespace="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp"
+        location="SIP_GFIPM_S2S_1.0/wsaEnabledWSPPolicy.wsdl"/>
+    
+    <wsdl:types>
+        <!--
+        Note: in published WSDL following line present
+                <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                However to enable @SchemaValidation feature on the endpoint we
+                have to remove xmlns:xsd declaration.
+        -->
+        <xsd:schema>
+            <xsd:import
+                namespace="http://lexs.justice.gov/publishdiscover/5.0"
+                schemaLocation="information/extension-lexs/lexs-publish-discover/5.0/lexs-publish-discover.xsd" />
+            <xsd:import
+                namespace="http://lexs.justice.gov/meta/5.0"
+                schemaLocation="information/extension-lexs/lexs-meta/5.0/lexs-meta.xsd" />
+            <xsd:import
+                namespace="http://lexs.justice.gov/faults/5.0"
+                schemaLocation="information/extension-lexs/lexs-faults/5.0/lexs-faults.xsd" />
+        </xsd:schema>
+    </wsdl:types>
+    
+    <wsdl:message name="doPublish">
+        <wsdl:part name="parameters" element="lexspd:doPublish" />
+    </wsdl:message>
+    
+    <wsdl:message name="doPublishAcknowledgedRequest">
+        <wsdl:part name="parameters" element="lexspd:doPublishAcknowledgedRequest" />
+    </wsdl:message>
+
+    <wsdl:message name="doPublishAcknowledgedResponse">
+        <wsdl:part name="parameters" element="lexspd:doPublishAcknowledgedResponse" />
+    </wsdl:message>
+    
+    <!--<wsdl:message name="messageMetadata">-->
+        <!--<wsdl:part name="messageMetadata" element="lexsmeta:MessageMetadata"/>-->
+    <!--</wsdl:message>-->
+    
+    <wsdl:message name="businessRuleNotMetFault">
+        <wsdl:part name="parameters" element="lexsfaults:BusinessRuleNotMetFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="invalidRequestFault">
+        <wsdl:part name="parameters" element="lexsfaults:InvalidRequestFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="networkFailureFault">
+        <wsdl:part name="parameters" element="lexsfaults:NetworkFailureFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="otherErrorFault">
+        <wsdl:part name="parameters" element="lexsfaults:OtherErrorFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="timeoutFault">
+        <wsdl:part name="parameters" element="lexsfaults:TimeoutFault"/>
+    </wsdl:message>
+
+    <!-- Port Types -->        
+    <wsdl:portType name="PDWebServicePortType">
+    
+        <wsdl:operation name="doPublish">
+            <wsdl:input name="doPublish" 
+                        message="tns:doPublish"
+                        wsaw:Action="http://lexs.justice.gov/publishdiscover/5.0/doPublish"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="doPublishAcknowledged">
+            <wsdl:input name="doPublishAcknowledgedRequest" 
+                        message="tns:doPublishAcknowledgedRequest"
+                        wsaw:Action="http://lexs.justice.gov/publishdiscover/5.0/doPublishAcknowledgedRequest"/>
+            <wsdl:output name="doPublishAcknowledgedResponse" 
+                         message="tns:doPublishAcknowledgedResponse"
+                         wsaw:Action="http://lexs.justice.gov/publishdiscover/5.0/doPublishAcknowledgedResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>
+        
+    </wsdl:portType>
+    
+    <wsdl:binding 
+        name="PDWebServiceSoapBinding"
+        type="tns:PDWebServicePortType">
+        <wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:BindingPolicy"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        
+        <wsdl:operation name="doPublish">
+            <soap:operation soapAction="http://lexs.justice.gov/publishdiscover/5.0/doPublish"/>
+            <wsdl:input name="doPublish">
+                <soap:body use="literal" />
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+        </wsdl:operation>
+        
+        <wsdl:operation name="doPublishAcknowledged">
+            <soap:operation soapAction="http://lexs.justice.gov/publishdiscover/5.0/doPublishAcknowledgedRequest"/>
+            <wsdl:input name="doPublishAcknowledgedRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="doPublishAcknowledgedResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+    </wsdl:binding>
+    
+</wsdl:definitions>

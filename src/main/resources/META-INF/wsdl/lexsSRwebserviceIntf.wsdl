@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document: $Id: lexsSRwebserviceIntf.wsdl 48170 2016-08-25 06:17:39Z ys34 $
+    Description   : Types, Messages, Services, Ports, and Bindings template definitions for LEXS 5.0 Search/Retrieve Web Service
+-->
+<wsdl:definitions
+    targetNamespace="http://lexs.justice.gov/searchretrieve/5.0/ws" 
+    xmlns:tns="http://lexs.justice.gov/searchretrieve/5.0/ws"     
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:lexssr="http://lexs.justice.gov/searchretrieve/5.0"
+    xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+    xmlns:lexsfaults="http://lexs.justice.gov/faults/5.0"
+    xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <wsdl:import
+        namespace="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp"
+        location="SIP_GFIPM_S2S_1.0/wsaEnabledWSPPolicy.wsdl"/>
+
+    <wsdl:types>
+        <!--
+        Note: in published WSDL following line present
+                <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                However to enable @SchemaValidation feature on the endpoint we
+                have to remove xmlns:xsd declaration.
+        -->
+        <xsd:schema>
+            <xsd:import 
+                namespace="http://lexs.justice.gov/searchretrieve/5.0" 
+                schemaLocation="information/extension-lexs/lexs-search-retrieve/5.0/lexs-search-retrieve.xsd"/>
+            <xsd:import
+                namespace="http://lexs.justice.gov/meta/5.0"
+                schemaLocation="information/extension-lexs/lexs-meta/5.0/lexs-meta.xsd" />
+            <xsd:import
+                namespace="http://lexs.justice.gov/faults/5.0"
+                schemaLocation="information/extension-lexs/lexs-faults/5.0/lexs-faults.xsd" />
+        </xsd:schema> 
+    </wsdl:types>   
+    
+    <wsdl:message name="doAttachmentSearchRequest">
+        <wsdl:part name="parameters" element="lexssr:doAttachmentSearchRequest"/>
+    </wsdl:message>    
+    
+    <wsdl:message name="doDataItemMetadataSearchRequest">
+        <wsdl:part name="parameters" element="lexssr:doDataItemMetadataSearchRequest"/>
+    </wsdl:message>    
+
+    <wsdl:message name="doSearchResponse">
+        <wsdl:part name="parameters" element="lexssr:doSearchResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name="doStructuredSearchRequest">
+        <wsdl:part name="parameters" element="lexssr:doStructuredSearchRequest"/>
+    </wsdl:message>
+    
+    <wsdl:message name="doTextSearchRequest">
+        <wsdl:part name="parameters" element="lexssr:doTextSearchRequest"/>
+    </wsdl:message>
+    
+    <wsdl:message name="getAttachmentRequest">
+        <wsdl:part name="parameters" element="lexssr:getAttachmentRequest"/>
+    </wsdl:message>
+    
+    <wsdl:message name="getAttachmentResponse">
+        <wsdl:part name="parameters" element="lexssr:getAttachmentResponse"/>
+    </wsdl:message>
+   
+    <wsdl:message name="getDataItemRequest">
+        <wsdl:part name="parameters" element="lexssr:getDataItemRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="getEntityRequest">
+        <wsdl:part name="parameters" element="lexssr:getEntityRequest"/>
+    </wsdl:message>
+        
+    <wsdl:message name="getDataItemResponse">
+        <wsdl:part name="parameters" element="lexssr:getDataItemResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="getDataItemWithAttachmentsRequest">
+        <wsdl:part name="parameters" element="lexssr:getDataItemWithAttachmentsRequest"/>
+    </wsdl:message>
+    
+    <wsdl:message name="getDataItemWithAttachmentsResponse">
+        <wsdl:part name="parameters" element="lexssr:getDataItemWithAttachmentsResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name="getRenderedDataItemRequest">
+        <wsdl:part name="parameters" element="lexssr:getRenderedDataItemRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="getRenderedEntityRequest">
+        <wsdl:part name="parameters" element="lexssr:getRenderedEntityRequest"/>
+    </wsdl:message>
+
+    <!--<wsdl:message name="messageMetadata">-->
+        <!--<wsdl:part name="messageMetadata" element="lexsmeta:MessageMetadata"/>-->
+    <!--</wsdl:message>-->
+
+    <!-- Fault Messages -->
+    <wsdl:message name="businessRuleNotMetFault">
+        <wsdl:part name="parameters" element="lexsfaults:BusinessRuleNotMetFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="fuzzyMatchNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:FuzzyMatchNotSupportedFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="invalidAttachmentRequestedFault">
+        <wsdl:part name="parameters" element="lexsfaults:InvalidAttachmentRequestedFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="invalidDataItemRequestedFault">
+        <wsdl:part name="parameters" element="lexsfaults:InvalidDataItemRequestedFault"/>
+    </wsdl:message>
+    
+    <wsdl:message name="invalidEntityRequestedFault">
+        <wsdl:part name="parameters" element="lexsfaults:InvalidEntityRequestedFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="invalidRequestFault">
+        <wsdl:part name="parameters" element="lexsfaults:InvalidRequestFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="logicalOperatorsNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:LogicalOperatorsNotSupportedFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="multipleValuesNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:MultipleValuesNotSupportedFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="networkFailureFault">
+        <wsdl:part name="parameters" element="lexsfaults:NetworkFailureFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="nextPreviousNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:NextPreviousNotSupportedFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="otherErrorFault">
+        <wsdl:part name="parameters" element="lexsfaults:OtherErrorFault"/>
+    </wsdl:message>
+	
+    <wsdl:message name="phrasesNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:PhrasesNotSupportedFault"/>
+    </wsdl:message>
+
+    <wsdl:message name="queryFieldNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:QueryFieldNotSupportedFault"/>
+    </wsdl:message>
+
+    <wsdl:message name="queryObjectNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:QueryObjectNotSupportedFault"/>
+    </wsdl:message>
+
+    <wsdl:message name="queryOperatorNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:QueryOperatorNotSupportedFault"/>
+    </wsdl:message>
+
+    <wsdl:message name="structuredSearchNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:StructuredSearchNotSupportedFault"/>
+    </wsdl:message>				
+
+    <wsdl:message name="unstructuredSearchNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:UnstructuredSearchNotSupportedFault"/>
+    </wsdl:message>				
+
+    <wsdl:message name="timeoutFault">
+        <wsdl:part name="parameters" element="lexsfaults:TimeoutFault"/>
+    </wsdl:message>
+
+    <wsdl:message name="wildcardNotSupportedFault">
+        <wsdl:part name="parameters" element="lexsfaults:WildcardNotSupportedFault"/>
+    </wsdl:message>	
+	
+    <!-- Port Type -->
+    <wsdl:portType name="SRWebServicePortType">
+        
+        <wsdl:operation name="doAttachmentSearch">
+            <wsdl:input name="doAttachmentSearchRequest" 
+                        message="tns:doAttachmentSearchRequest"
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/doAttachmentSearchRequest"/>
+            <wsdl:output name="doAttachmentSearchResponse"
+                         message="tns:doSearchResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/doSearchResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="nextPreviousNotSupportedFault" message="tns:nextPreviousNotSupportedFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>        
+
+        <wsdl:operation name="doDataItemMetadataSearch">
+            <wsdl:input name="doDataItemMetadataSearchRequest" 
+                        message="tns:doDataItemMetadataSearchRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/doDataItemMetadataSearchRequest"/>
+            <wsdl:output name="doDataItemMetadataSearchResponse"
+                         message="tns:doSearchResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/doSearchResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="nextPreviousNotSupportedFault" message="tns:nextPreviousNotSupportedFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>                
+        
+        <wsdl:operation name="doStructuredSearch">
+            <wsdl:input name="doStructuredSearchRequest" 
+                        message="tns:doStructuredSearchRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/doStructuredSearchRequest"/>
+            <wsdl:output name="doStructuredSearchResponse"
+                         message="tns:doSearchResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/doSearchResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="fuzzyMatchNotSupportedFault" message="tns:fuzzyMatchNotSupportedFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="multipleValuesNotSupportedFault" message="tns:multipleValuesNotSupportedFault"/>            
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="nextPreviousNotSupportedFault" message="tns:nextPreviousNotSupportedFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="queryFieldNotSupportedFault" message="tns:queryFieldNotSupportedFault"/>
+            <wsdl:fault name="queryObjectNotSupportedFault" message="tns:queryObjectNotSupportedFault"/>
+            <wsdl:fault name="queryOperatorNotSupportedFault" message="tns:queryOperatorNotSupportedFault"/>
+            <wsdl:fault name="structuredSearchNotSupportedFault" message="tns:structuredSearchNotSupportedFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+            <wsdl:fault name="wildcardNotSupportedFault" message="tns:wildcardNotSupportedFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="doTextSearch">
+            <wsdl:input name="doTextSearchRequest" 
+                        message="tns:doTextSearchRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/doTextSearchRequest"/>
+            <wsdl:output name="doTextSearchResponse"
+                         message="tns:doSearchResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/doSearchResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="logicalOperatorsNotSupportedFault" message="tns:logicalOperatorsNotSupportedFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="nextPreviousNotSupportedFault" message="tns:nextPreviousNotSupportedFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="phrasesNotSupportedFault" message="tns:phrasesNotSupportedFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+            <wsdl:fault name="unstructuredSearchNotSupportedFault" message="tns:unstructuredSearchNotSupportedFault"/>
+            <wsdl:fault name="wildcardNotSupportedFault" message="tns:wildcardNotSupportedFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="getDataItem">
+            <wsdl:input name="getDataItemRequest" 
+                        message="tns:getDataItemRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getDataItemRequest"/>
+            <wsdl:output name="getDataItemResponse" 
+                         message="tns:getDataItemResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getDataItemResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidDataItemRequestedFault" message="tns:invalidDataItemRequestedFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="getEntity">
+            <wsdl:input name="getEntityRequest" 
+                        message="tns:getEntityRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getEntityRequest"/>
+            <wsdl:output name="getEntityResponse"
+                         message="tns:getDataItemResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getDataItemResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidEntityRequestedFault" message="tns:invalidEntityRequestedFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>        
+                        
+        <wsdl:operation name="getDataItemWithAttachments">
+            <wsdl:input name="getDataItemWithAttachmentsRequest" 
+                        message="tns:getDataItemWithAttachmentsRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getDataItemWithAttachmentsRequest"/>
+            <wsdl:output name="getDataItemWithAttachmentsResponse" 
+                         message="tns:getDataItemWithAttachmentsResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getDataItemWithAttachmentsResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidDataItemRequestedFault" message="tns:invalidDataItemRequestedFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>        
+        
+        <wsdl:operation name="getRenderedDataItem">
+            <wsdl:input name="getRenderedDataItemRequest" 
+                        message="tns:getRenderedDataItemRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getRenderedDataItemRequest"/>
+            <wsdl:output name="getRenderedDataItemResponse"
+                         message="tns:getAttachmentResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getAttachmentResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidDataItemRequestedFault" message="tns:invalidDataItemRequestedFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>                
+
+        <wsdl:operation name="getRenderedEntity">
+            <wsdl:input name="getRenderedEntityRequest" 
+                        message="tns:getRenderedEntityRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getRenderedEntityRequest"/>
+            <wsdl:output name="getRenderedEntityResponse"
+                         message="tns:getAttachmentResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getAttachmentResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidEntityRequestedFault" message="tns:invalidEntityRequestedFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation> 
+                        
+        <wsdl:operation name="getAttachment">
+            <wsdl:input name="getAttachmentRequest" 
+                        message="tns:getAttachmentRequest" 
+                        wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getAttachmentRequest"/>
+            <wsdl:output name="getAttachmentResponse" 
+                         message="tns:getAttachmentResponse" 
+                         wsaw:Action="http://lexs.justice.gov/searchretrieve/5.0/getAttachmentResponse"/>
+            <wsdl:fault name="businessRuleNotMetFault" message="tns:businessRuleNotMetFault"/>
+            <wsdl:fault name="invalidAttachmentRequestedFault" message="tns:invalidAttachmentRequestedFault"/>
+            <wsdl:fault name="invalidRequestFault" message="tns:invalidRequestFault"/>
+            <wsdl:fault name="networkFailureFault" message="tns:networkFailureFault"/>
+            <wsdl:fault name="otherErrorFault" message="tns:otherErrorFault"/>
+            <wsdl:fault name="timeoutFault" message="tns:timeoutFault"/>
+        </wsdl:operation>
+              
+    </wsdl:portType>
+    
+    
+    <wsdl:binding 
+        name="SRWebServiceSoapBinding" 
+        type="tns:SRWebServicePortType">
+        <wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:BindingPolicy"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        
+        <wsdl:operation name="doAttachmentSearch">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/doAttachmentSearchRequest"/>
+            <wsdl:input name="doAttachmentSearchRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="doAttachmentSearchResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="nextPreviousNotSupportedFault">
+                <soap:fault name="nextPreviousNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="doDataItemMetadataSearch">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/doDataItemMetadataSearchRequest"/>
+            <wsdl:input name="doDataItemMetadataSearchRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="doDataItemMetadataSearchResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="nextPreviousNotSupportedFault">
+                <soap:fault name="nextPreviousNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="doStructuredSearch">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/doStructuredSearchRequest"/>
+            <wsdl:input name="doStructuredSearchRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="doStructuredSearchResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="fuzzyMatchNotSupportedFault">
+                <soap:fault name="fuzzyMatchNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="multipleValuesNotSupportedFault">
+                <soap:fault name="multipleValuesNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="nextPreviousNotSupportedFault">
+                <soap:fault name="nextPreviousNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="queryFieldNotSupportedFault">
+                <soap:fault name="queryFieldNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="queryObjectNotSupportedFault">
+                <soap:fault name="queryObjectNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="queryOperatorNotSupportedFault">
+                <soap:fault name="queryOperatorNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="structuredSearchNotSupportedFault">
+                <soap:fault name="structuredSearchNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="wildcardNotSupportedFault">
+                <soap:fault name="wildcardNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="doTextSearch">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/doTextSearchRequest"/>
+            <wsdl:input name="doTextSearchRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="doTextSearchResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="logicalOperatorsNotSupportedFault">
+                <soap:fault name="logicalOperatorsNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="nextPreviousNotSupportedFault">
+                <soap:fault name="nextPreviousNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="phrasesNotSupportedFault">
+                <soap:fault name="phrasesNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="unstructuredSearchNotSupportedFault">
+                <soap:fault name="unstructuredSearchNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="wildcardNotSupportedFault">
+                <soap:fault name="wildcardNotSupportedFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="getDataItem">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/getDataItemRequest"/>
+            <wsdl:input name="getDataItemRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="getDataItemResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidDataItemRequestedFault">
+                <soap:fault name="invalidDataItemRequestedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="getEntity">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/getEntityRequest"/>
+            <wsdl:input name="getEntityRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="getDataItemResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidEntityRequestedFault">
+                <soap:fault name="invalidEntityRequestedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+                		
+        <wsdl:operation name="getDataItemWithAttachments">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/getDataItemWithAttachmentsRequest"/>
+            <wsdl:input name="getDataItemWithAttachmentsRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="getDataItemWithAttachmentsResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidDataItemRequestedFault">
+                <soap:fault name="invalidDataItemRequestedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>        
+        
+        <wsdl:operation name="getRenderedDataItem">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/getRenderedDataItemRequest"/>
+            <wsdl:input name="getRenderedDataItemRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="getAttachmentResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidDataItemRequestedFault">
+                <soap:fault name="invalidDataItemRequestedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>        
+
+        <wsdl:operation name="getRenderedEntity">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/getRenderedEntityRequest"/>
+            <wsdl:input name="getRenderedEntityRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="getAttachmentResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidEntityRequestedFault">
+                <soap:fault name="invalidEntityRequestedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+                
+        <wsdl:operation name="getAttachment">
+            <soap:operation soapAction="http://lexs.justice.gov/searchretrieve/5.0/getAttachmentRequest"/>
+            <wsdl:input name="getAttachmentRequest">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>-->
+            </wsdl:input>
+            <wsdl:output name="getAttachmentResponse">
+                <soap:body use="literal"/>
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <!--<wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:OutputPolicy"/>-->
+            </wsdl:output>
+            <wsdl:fault name="businessRuleNotMetFault">
+                <soap:fault name="businessRuleNotMetFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidAttachmentRequestedFault">
+                <soap:fault name="invalidAttachmentRequestedFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="invalidRequestFault">
+                <soap:fault name="invalidRequestFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="networkFailureFault">
+                <soap:fault name="networkFailureFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="otherErrorFault">
+                <soap:fault name="otherErrorFault" use="literal"/>
+            </wsdl:fault>
+            <wsdl:fault name="timeoutFault">
+                <soap:fault name="timeoutFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+    </wsdl:binding>
+    
+</wsdl:definitions>

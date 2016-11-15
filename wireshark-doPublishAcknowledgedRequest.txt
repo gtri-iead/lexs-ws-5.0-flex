@@ -1,0 +1,130 @@
+Frame 1549: 1452 bytes on wire (11616 bits), 728 bytes captured (5824 bits) on interface 0
+Null/Loopback
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+Transmission Control Protocol, Src Port: 52927, Dst Port: 8080, Seq: 13467, Ack: 1, Len: 684
+[11 Reassembled TCP Segments (14150 bytes): #1537(326), #1539(1460), #1540(1460), #1541(1460), #1542(1460), #1544(1460), #1545(1460), #1546(1460), #1547(1460), #1548(1460), #1549(684)]
+Hypertext Transfer Protocol
+    POST /lexs-ws-jaxws-service/services/pd HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): POST /lexs-ws-jaxws-service/services/pd HTTP/1.1\r\n]
+        Request Method: POST
+        Request URI: /lexs-ws-jaxws-service/services/pd
+        Request Version: HTTP/1.1
+    Accept-Encoding: gzip,deflate\r\n
+    Content-Type: text/xml;charset=UTF-8\r\n
+    SOAPAction: "http://lexs.justice.gov/publishdiscover/5.0/doPublishAcknowledgedRequest"\r\n
+    Content-Length: 13824\r\n
+        [Content length: 13824]
+    Host: localhost:8080\r\n
+    Connection: Keep-Alive\r\n
+    User-Agent: Apache-HttpClient/4.1.1 (java 1.5)\r\n
+    \r\n
+    [Full request URI: http://localhost:8080/lexs-ws-jaxws-service/services/pd]
+    [HTTP request 1/1]
+    [Response in frame: 1556]
+    File Data: 13824 bytes
+eXtensible Markup Language
+    <soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:lexspd="http://lexs.justice.gov/publishdiscover/5.0"
+        xmlns:lexs="http://lexs.justice.gov/lexs/5.0"
+        xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+        xmlns:j="http://release.niem.gov/niem/domains/jxdm/5.2/"
+        xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <soapenv:Header
+            xmlns:wsa="http://www.w3.org/2005/08/addressing">
+            <wsa:Action>
+                http://lexs.justice.gov/publishdiscover/5.0/doPublishAcknowledgedRequest
+                </wsa:Action>
+            <wsa:ReplyTo>
+                <wsa:Address>
+                    http://www.w3.org/2005/08/addressing/anonymous
+                    </wsa:Address>
+                </wsa:ReplyTo>
+            <wsa:MessageID>
+                uuid:e416d96a-33d4-462f-8d31-31647266096f
+                </wsa:MessageID>
+            <wsa:To>
+                http://localhost:8080/lexs-ws-jaxws-service/services/pd
+                </wsa:To>
+            </soapenv:Header>
+        <soapenv:Body>
+            <lexspd:doPublishAcknowledgedRequest>
+                <lexs:PublishMessage>
+                    <lexsmeta:MessageMetadata>
+                        <lexsmeta:LEXSVersionNumberText>
+                            5.0
+                            </lexsmeta:LEXSVersionNumberText>
+                        <lexsmeta:MessageDateTime>
+                            2001-12-17T09:30:47Z
+                            </lexsmeta:MessageDateTime>
+                        <lexsmeta:MessageIdentifier>
+                            uuid:ab19b2f2-d64c-44c6-ab18-61dde2f25e61
+                            </lexsmeta:MessageIdentifier>
+                        <lexsmeta:DataSensitivityText>
+                            SBU
+                            </lexsmeta:DataSensitivityText>
+                        <lexs:MessageOriginIdentifier>
+                            <j:OrganizationORIIdentification>
+                                <nc:IdentificationID>
+                                    ATL123456
+                                    </nc:IdentificationID>
+                                </j:OrganizationORIIdentification>
+                            <nc:OrganizationName>
+                                ATLANTA PD
+                                </nc:OrganizationName>
+                            <lexs:SystemID>
+                                APD123
+                                </lexs:SystemID>
+                            </lexs:MessageOriginIdentifier>
+                        </lexsmeta:MessageMetadata>
+                    <!--=======================  Data Submitter Metadata  =======================-->
+                    <lexs:DataSubmitterIdentifier>
+                        <j:OrganizationORIIdentification>
+                            <nc:IdentificationID>
+                                ATL123456
+                                </nc:IdentificationID>
+                            </j:OrganizationORIIdentification>
+                        <nc:OrganizationName>
+                            ATLANTA PD
+                            </nc:OrganizationName>
+                        <lexs:SystemID>
+                            APD123
+                            </lexs:SystemID>
+                        </lexs:DataSubmitterIdentifier>
+                    <!--=======================  Message Attachment containing Mug Shot  =======================-->
+                    <lexs:Attachment>
+                        <lexs:AttachmentURI>
+                            http://www.gtri.org/LEXS/examples/mugshot1.jpg
+                            </lexs:AttachmentURI>
+                        <lexs:AttachmentContentBinary>
+                            <nc:BinaryID>
+                                PIC123
+                                </nc:BinaryID>
+                            <!-- base 64 object is actually a B/W picture of Herman Munster -->
+                            <nc:Base64BinaryObject>
+                                 [truncated]/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCACgAIADASI
+                                </nc:Base64BinaryObject>
+                            <nc:BinaryCaptureDate>
+                                <nc:DateTime>
+                                    1967-08-13T14:20:00.0Z
+                                    </nc:DateTime>
+                                </nc:BinaryCaptureDate>
+                            <nc:BinaryDescriptionText>
+                                Mug shot for John Doe
+                                </nc:BinaryDescriptionText>
+                            <nc:BinaryFormatText>
+                                image/jpg
+                                </nc:BinaryFormatText>
+                            <nc:BinaryFormatStandardName>
+                                MIME
+                                </nc:BinaryFormatStandardName>
+                            <nc:BinarySizeValue>
+                                10000
+                                </nc:BinarySizeValue>
+                            </lexs:AttachmentContentBinary>
+                        </lexs:Attachment>
+                    </lexs:PublishMessage>
+                </lexspd:doPublishAcknowledgedRequest>
+            </soapenv:Body>
+        </soapenv:Envelope>

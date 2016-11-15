@@ -1,0 +1,199 @@
+Frame 2135: 1936 bytes on wire (15488 bits), 970 bytes captured (7760 bits) on interface 0
+Null/Loopback
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+Transmission Control Protocol, Src Port: 52954, Dst Port: 8080, Seq: 4702, Ack: 1, Len: 926
+[5 Reassembled TCP Segments (5627 bytes): #2130(321), #2132(1460), #2133(1460), #2134(1460), #2135(926)]
+Hypertext Transfer Protocol
+    POST /lexs-ws-jaxws-service/services/sr HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): POST /lexs-ws-jaxws-service/services/sr HTTP/1.1\r\n]
+        Request Method: POST
+        Request URI: /lexs-ws-jaxws-service/services/sr
+        Request Version: HTTP/1.1
+    Accept-Encoding: gzip,deflate\r\n
+    Content-Type: text/xml;charset=UTF-8\r\n
+    SOAPAction: "http://lexs.justice.gov/searchretrieve/5.0/doStructuredSearchRequest"\r\n
+    Content-Length: 5306\r\n
+        [Content length: 5306]
+    Host: localhost:8080\r\n
+    Connection: Keep-Alive\r\n
+    User-Agent: Apache-HttpClient/4.1.1 (java 1.5)\r\n
+    \r\n
+    [Full request URI: http://localhost:8080/lexs-ws-jaxws-service/services/sr]
+    [HTTP request 1/1]
+    [Response in frame: 2150]
+    File Data: 5306 bytes
+eXtensible Markup Language
+    <soapenv:Envelope
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:lexssr="http://lexs.justice.gov/searchretrieve/5.0"
+        xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/3.2/"
+        xmlns:j="http://release.niem.gov/niem/domains/jxdm/5.2/"
+        xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+        xmlns:lexsquery="http://lexs.justice.gov/query/5.0"
+        xmlns:lexs="http://lexs.justice.gov/lexs/5.0"
+        xmlns:lexsdigest="http://lexs.justice.gov/digest/5.0"
+        xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/">
+        <soapenv:Header
+            xmlns:wsa="http://www.w3.org/2005/08/addressing">
+            <wsa:Action>
+                http://lexs.justice.gov/searchretrieve/5.0/doStructuredSearchRequest
+                </wsa:Action>
+            <wsa:ReplyTo>
+                <wsa:Address>
+                    http://www.w3.org/2005/08/addressing/anonymous
+                    </wsa:Address>
+                </wsa:ReplyTo>
+            <wsa:MessageID>
+                uuid:a79cacf9-f578-43cf-a554-479c5d3b8dc1
+                </wsa:MessageID>
+            <wsa:To>
+                http://localhost:8080/lexs-ws-jaxws-service/services/sr
+                </wsa:To>
+            </soapenv:Header>
+        <soapenv:Body>
+            <lexssr:doStructuredSearchRequest>
+                <lexs:StructuredSearchRequestMessage>
+                    <lexsmeta:MessageMetadata>
+                        <lexsmeta:LEXSVersionNumberText>
+                            5.0
+                            </lexsmeta:LEXSVersionNumberText>
+                        <lexsmeta:MessageDateTime>
+                            2001-12-17T09:30:47Z
+                            </lexsmeta:MessageDateTime>
+                        <lexsmeta:MessageIdentifier>
+                            uuid:ab19b2f2-d64c-44c6-ab18-61dde2f25e61
+                            </lexsmeta:MessageIdentifier>
+                        <lexsmeta:DataSensitivityText>
+                            SBU
+                            </lexsmeta:DataSensitivityText>
+                        <lexs:MessageOriginIdentifier>
+                            <j:OrganizationORIIdentification>
+                                <nc:IdentificationID>
+                                    ATL123456
+                                    </nc:IdentificationID>
+                                </j:OrganizationORIIdentification>
+                            <nc:OrganizationName>
+                                ATLANTA PD
+                                </nc:OrganizationName>
+                            <lexs:SystemID>
+                                APD123
+                                </lexs:SystemID>
+                            </lexs:MessageOriginIdentifier>
+                        </lexsmeta:MessageMetadata>
+                    <lexs:UserAssertion>
+                        <lexs:UserID>
+                            AM123
+                            </lexs:UserID>
+                        <nc:PersonGivenName>
+                            Alex
+                            </nc:PersonGivenName>
+                        <nc:PersonSurName>
+                            Murphy
+                            </nc:PersonSurName>
+                        <nc:ContactEmailID>
+                            murphy@apd.gov
+                            </nc:ContactEmailID>
+                        <nc:OrganizationName>
+                            ATLANTA PD
+                            </nc:OrganizationName>
+                        <j:OrganizationORIIdentification>
+                            <nc:IdentificationID>
+                                ATL123456
+                                </nc:IdentificationID>
+                            </j:OrganizationORIIdentification>
+                        </lexs:UserAssertion>
+                    <lexs:UserAttentionTo>
+                        <lexs:UserID>
+                            AI123
+                            </lexs:UserID>
+                        <nc:PersonGivenName>
+                            Allen
+                            </nc:PersonGivenName>
+                        <nc:PersonSurName>
+                            Lewis
+                            </nc:PersonSurName>
+                        <nc:ContactEmailID>
+                            lewis@apd.gov
+                            </nc:ContactEmailID>
+                        <nc:OrganizationName>
+                            ATLANTA PD
+                            </nc:OrganizationName>
+                        <j:OrganizationORIIdentification>
+                            <nc:IdentificationID>
+                                ATL123456
+                                </nc:IdentificationID>
+                            </j:OrganizationORIIdentification>
+                        </lexs:UserAttentionTo>
+                    <lexs:SearchRequestMetadata>
+                        <lexs:RequestedDataCategoryCode>
+                            Person
+                            </lexs:RequestedDataCategoryCode>
+                        <lexs:DataOwnerIdentifier>
+                            <j:OrganizationORIIdentification>
+                                <nc:IdentificationID>
+                                    ATL123456
+                                    </nc:IdentificationID>
+                                </j:OrganizationORIIdentification>
+                            <nc:OrganizationName>
+                                ATLANTA PD
+                                </nc:OrganizationName>
+                            <lexs:SystemID>
+                                APD123
+                                </lexs:SystemID>
+                            </lexs:DataOwnerIdentifier>
+                        <lexs:MaxItemMatchesNumeric>
+                            10
+                            </lexs:MaxItemMatchesNumeric>
+                        <lexs:DataItemCategoryText>
+                            ALL
+                            </lexs:DataItemCategoryText>
+                        <lexs:SortOrderCode>
+                            Relevance
+                            </lexs:SortOrderCode>
+                        <lexs:TimeoutDuration>
+                            P1Y2M2DT10H30M
+                            </lexs:TimeoutDuration>
+                        <lexs:StructuredPayloadsRequestedCode>
+                            all
+                            </lexs:StructuredPayloadsRequestedCode>
+                        </lexs:SearchRequestMetadata>
+                    <lexsquery:StructuredQuery>
+                        <!--=======================  1st digest search term  =======================-->
+                        <lexsquery:DigestQueryStatement>
+                            <lexsquery:DigestQueryField>
+                                <lexsdigest:EntityPerson>
+                                    <nc:Person>
+                                        <nc:PersonName>
+                                            <nc:PersonGivenName>
+                                                Tommy
+                                                </nc:PersonGivenName>
+                                            </nc:PersonName>
+                                        </nc:Person>
+                                    </lexsdigest:EntityPerson>
+                                </lexsquery:DigestQueryField>
+                            <lexsquery:QueryMatchCode>
+                                exact
+                                </lexsquery:QueryMatchCode>
+                            </lexsquery:DigestQueryStatement>
+                        <!--=======================  2nd digest search term  =======================-->
+                        <lexsquery:DigestQueryStatement>
+                            <lexsquery:DigestQueryField>
+                                <lexsdigest:EntityPerson>
+                                    <nc:Person>
+                                        <nc:PersonName>
+                                            <nc:PersonSurName>
+                                                Jones
+                                                </nc:PersonSurName>
+                                            </nc:PersonName>
+                                        </nc:Person>
+                                    </lexsdigest:EntityPerson>
+                                </lexsquery:DigestQueryField>
+                            <lexsquery:QueryMatchCode>
+                                exact
+                                </lexsquery:QueryMatchCode>
+                            </lexsquery:DigestQueryStatement>
+                        </lexsquery:StructuredQuery>
+                    </lexs:StructuredSearchRequestMessage>
+                </lexssr:doStructuredSearchRequest>
+            </soapenv:Body>
+        </soapenv:Envelope>

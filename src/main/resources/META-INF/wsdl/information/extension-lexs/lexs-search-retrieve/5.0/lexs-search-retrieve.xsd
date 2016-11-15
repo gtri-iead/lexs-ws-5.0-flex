@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document: $Id: lexs-search-retrieve.xsd 48185 2016-09-08 22:57:09Z ys34 $
+    Namespace     : xmlns:lexssr="http://lexs.justice.gov/searchretrieve/5.0"
+    Description   : LEXS Search and Retrieve Message Format Schema
+-->
+<xsd:schema 
+    xmlns:lexssr="http://lexs.justice.gov/searchretrieve/5.0" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://lexs.justice.gov/searchretrieve/5.0" 
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified" 
+    version="TBD">
+    
+    <xsd:annotation>
+        <xsd:documentation>LEXS Search Retrieve Message Format Schema</xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="doStructuredSearchRequest" type="lexssr:doStructuredSearchRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS structured search request.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="doStructuredSearchRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS structured search request.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="doTextSearchRequest" type="lexssr:doTextSearchRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS text search request.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="doTextSearchRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS text search request.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="doDataItemMetadataSearchRequest" type="lexssr:doDataItemMetadataSearchRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS Data Item metadata search request.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="doDataItemMetadataSearchRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS Data Item metadata search request.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="doAttachmentSearchRequest" type="lexssr:doAttachmentSearchRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS Data Item metadata search request.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="doAttachmentSearchRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS Attachment search request.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="doSearchResponse" type="lexssr:doSearchResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS response to a structured, text, or metadata search request.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="doSearchResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS response to a structured, text, or metadata search request.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <!-- DataItem/Attachment retrieval messaging -->
+    <xsd:element name="getDataItemRequest" type="lexssr:getDataItemRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS request for a Data Item.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getEntityRequest" type="lexssr:getEntityRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS request for an Entity.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getDataItemWithAttachmentsRequest" type="lexssr:getDataItemRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS request for a Data Item with all attachments included.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="getDataItemRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS request for a Data Item.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getEntityRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS request for an Entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getDataItemResponse" type="lexssr:getDataItemResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS response to a request for a Data Item.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="getDataItemResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS response to a request for a Data Item.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getDataItemWithAttachmentsResponse" type="lexssr:getDataItemWithAttachmentsResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS response to a request for a Data Item with all attachments included.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="getDataItemWithAttachmentsResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS response to a request for a Data Item with all attachments included.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getRenderedDataItemRequest" type="lexssr:getDataItemRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS request for rendered Data Items.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getRenderedEntityRequest" type="lexssr:getEntityRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS request for rendered Entity.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="getAttachmentRequest" type="lexssr:getAttachmentRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS request for attachments.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="getAttachmentRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS request for attachments.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="getAttachmentResponse" type="lexssr:getAttachmentResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS response to request for attachments.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="getAttachmentResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS response to request for attachments.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

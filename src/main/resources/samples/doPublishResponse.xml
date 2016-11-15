@@ -1,0 +1,13 @@
+<lexspd:doPublishAcknowledgedResponse xmlns:lexspd="http://lexs.justice.gov/publishdiscover/5.0" xmlns:lexs="http://lexs.justice.gov/lexs/5.0" xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <lexs:PublishMessageAcknowledgment>
+        <lexsmeta:MessageMetadata>
+            <lexsmeta:LEXSVersionNumberText>5.0</lexsmeta:LEXSVersionNumberText>
+            <lexsmeta:MessageDateTime>2016-06-09T09:30:47Z</lexsmeta:MessageDateTime>
+            <lexsmeta:MessageIdentifier>uuid:01848ada-db84-4f9e-ac46-3d4497a6da1f</lexsmeta:MessageIdentifier>
+            <lexsmeta:InResponseToMessageIdentifier>uuid:01848ada-db84-4f9e-ac46-3d4497a6da0e</lexsmeta:InResponseToMessageIdentifier>
+            <lexsmeta:DataSensitivityText>SBU</lexsmeta:DataSensitivityText>
+        </lexsmeta:MessageMetadata>
+        <!-- The reference parameters that are appropriate can be placed here -->
+        <lexs:PublishMessageAcknowledgmentReference>uuid:01848ada-db84-4f9e-ac46-3d4497a6da0g</lexs:PublishMessageAcknowledgmentReference>
+    </lexs:PublishMessageAcknowledgment>
+</lexspd:doPublishAcknowledgedResponse>

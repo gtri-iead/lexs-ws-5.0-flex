@@ -1,0 +1,16 @@
+gov.lexs.ws.flex.jaxws.ObjectFactory
+gov.lexs.ws.flex.de.jaxb.msg.ObjectFactory
+gov.lexs.ws.flex.pd.jaxb.msg.ObjectFactory
+gov.lexs.ws.flex.sr.jaxb.msg.ObjectFactory
+gov.lexs.ws.flex.oasis.wsn.b_2.ObjectFactory
+gov.lexs.ws.flex.oasis.wsn.t_1.ObjectFactory
+gov.lexs.ws.flex.oasis.wsrf.bf_2.ObjectFactory
+gov.lexs.ws.flex.w3.ws_addr.ObjectFactory
+gov.justice.lexs.meta._5.ObjectFactory
+gov.justice.lexs.library._5.ObjectFactory
+gov.justice.lexs.faults._5.ObjectFactory
+oasis.names.tc.saml._2_0.assertion.ObjectFactory
+oasis.names.tc.saml._2_0.metadata.ObjectFactory
+org.oasis_open.docs.wsrf.bf_2.ObjectFactory
+org.w3._2000._09.xmldsig_.ObjectFactory
+org.w3._2001._04.xmlenc_.ObjectFactory

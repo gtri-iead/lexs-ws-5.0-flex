@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document: $Id: lexsSNNCwebserviceImpl.wsdl 48210 2016-09-12 06:01:23Z ys34 $
+    Description   : Service Endpoint and Binding definition template for LEXS 5.0 Subscribe/Notifiy Notification Consumer Web Service
+-->       
+<wsdl:definitions name="WS-BaseNotification"
+    targetNamespace="http://docs.oasis-open.org/wsn/bw-2"
+    xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="http://docs.oasis-open.org/wsn/bw-2"
+    xmlns:wsntw="http://docs.oasis-open.org/wsn/bw-2"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+        
+    <wsdl:import 
+        namespace="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp"
+        location="SIP_GFIPM_S2S_1.0/gfipmS2SsipConsumerProviderWSPPolicy.wsdl"/>
+          
+    <wsdl:import 
+        namespace="http://docs.oasis-open.org/wsn/bw-2" 
+        location="bw-2.wsdl"/>
+       
+    <!-- ========= NotificationConsumer Binding Definition =========== -->    
+    <wsdl:binding 
+        name="SNNCWebServiceSoapBinding"
+        type="tns:NotificationConsumer">
+        <wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:BindingPolicy"/>        
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        
+        <wsdl:operation name="Notify">
+            <soap:operation soapAction="http://docs.oasis-open.org/wsn/bw-2/NotificationConsumer/Notify"/>
+            <wsdl:input name="Notify">
+                <soap:body use="literal" />
+                <!--<soap:header use="literal" message="tns:messageMetadata" part="messageMetadata"/>-->
+                <wsp:PolicyReference URI="urn:gfipm.net:ws:s2ssip:ConsumerProvider:wsp:InputPolicy"/>
+            </wsdl:input>
+        </wsdl:operation>
+                
+    </wsdl:binding>
+    
+    
+    <wsdl:service name="SNNCWebService">
+        <wsdl:port name="SNNCWebServicePort" binding="tns:SNNCWebServiceSoapBinding">
+            <soap:address location="${TBD}"/>
+        </wsdl:port>
+    </wsdl:service>
+    
+</wsdl:definitions>

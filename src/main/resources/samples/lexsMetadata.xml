@@ -1,0 +1,13 @@
+<lexsmeta:MessageMetadata xmlns:lexs="http://lexs.justice.gov/lexs/5.0" xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0" xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/5.2/">
+    <lexsmeta:LEXSVersionNumberText>5.0</lexsmeta:LEXSVersionNumberText>
+    <lexsmeta:MessageDateTime>2001-12-17T09:30:47Z</lexsmeta:MessageDateTime>
+    <lexsmeta:MessageIdentifier>uuid:ab19b2f2-d64c-44c6-ab18-61dde2f25e61</lexsmeta:MessageIdentifier>
+    <lexsmeta:DataSensitivityText>SBU</lexsmeta:DataSensitivityText>
+    <lexs:MessageOriginIdentifier>
+        <j:OrganizationORIIdentification>
+            <nc:IdentificationID>ATL123456</nc:IdentificationID>
+        </j:OrganizationORIIdentification>
+        <nc:OrganizationName>ATLANTA PD</nc:OrganizationName>
+        <lexs:SystemID>APD123</lexs:SystemID>
+    </lexs:MessageOriginIdentifier>
+</lexsmeta:MessageMetadata>

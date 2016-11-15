@@ -1,0 +1,199 @@
+<lexssr:doSearchResponse xmlns:lexssr="http://lexs.justice.gov/searchretrieve/5.0" xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/3.2/" xmlns:j="http://release.niem.gov/niem/domains/jxdm/5.2/" xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0" xmlns:lexs="http://lexs.justice.gov/lexs/5.0" xmlns:lexsdigest="http://lexs.justice.gov/digest/5.0" xmlns:lexslib="http://lexs.justice.gov/library/5.0" xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/" xmlns:s="http://release.niem.gov/niem/structures/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <lexs:SearchResponseMessage>
+        <lexsmeta:MessageMetadata>
+            <lexsmeta:LEXSVersionNumberText>5.0</lexsmeta:LEXSVersionNumberText>
+            <lexsmeta:MessageDateTime>2016-06-13T09:30:47Z</lexsmeta:MessageDateTime>
+            <lexsmeta:MessageIdentifier>uuid:01848ada-db84-4f9e-ac46-3d4497a6da1f</lexsmeta:MessageIdentifier>
+            <lexsmeta:InResponseToMessageIdentifier>uuid:01848ada-db84-4f9e-ac46-3d4497a6da0e</lexsmeta:InResponseToMessageIdentifier>
+            <lexsmeta:DataSensitivityText>SBU</lexsmeta:DataSensitivityText>
+            <!--=======================  Message Origin  =======================-->
+            <lexs:MessageOriginIdentifier>
+                <j:OrganizationORIIdentification>
+                    <nc:IdentificationID>ATL123456</nc:IdentificationID>
+                </j:OrganizationORIIdentification>
+                <nc:OrganizationName>ATLANTA PD</nc:OrganizationName>
+                <lexs:SystemID>APD123</lexs:SystemID>
+            </lexs:MessageOriginIdentifier>
+        </lexsmeta:MessageMetadata>
+        <!--=======================  Response Metadata  =======================-->
+        <lexs:ResponseMetadata>
+            <lexs:ResultCode>Success</lexs:ResultCode>
+        </lexs:ResponseMetadata>
+        <!--=======================  Search Response Metadata  =======================-->
+        <lexs:SearchResponseMetadata>
+            <lexs:MaxItemMatchesRequestedNumeric>10</lexs:MaxItemMatchesRequestedNumeric>
+            <lexs:NumberItemMatchesText>3</lexs:NumberItemMatchesText>
+            <lexs:ServerLimitIndicator>false</lexs:ServerLimitIndicator>
+        </lexs:SearchResponseMetadata>
+        <!--=========================================================-->
+        <!--=======================  Package #1 =======================-->
+        <!--=========================================================-->
+        <lexs:SearchResultPackage>
+            <lexs:PackageMetadata>
+                <lexs:DataItemID>123456789</lexs:DataItemID>
+                <lexs:DataItemCompleteIndicator>false</lexs:DataItemCompleteIndicator>
+                <lexs:DataItemContact>
+                    <nc:PersonGivenName>George</nc:PersonGivenName>
+                    <nc:PersonMiddleName>P</nc:PersonMiddleName>
+                    <nc:PersonSurName>Burdell</nc:PersonSurName>
+                    <nc:PersonFullName>George P Burdell</nc:PersonFullName>
+                    <nc:ContactEmailID>burdell@bpd.gov</nc:ContactEmailID>
+                    <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                </lexs:DataItemContact>
+                <lexs:DataItemDate>2001-12-17</lexs:DataItemDate>
+                <lexs:DataItemLEXSVersionNumberText>5.0</lexs:DataItemLEXSVersionNumberText>
+                <lexs:DataItemReferenceID>987654321</lexs:DataItemReferenceID>
+                <lexs:DataItemStatusText>Closed</lexs:DataItemStatusText>
+                <!--=======================  Data Owner Metadata  =======================-->
+                <lexs:DataOwnerMetadata>
+                    <lexs:DataOwnerIdentifier>
+                        <j:OrganizationORIIdentification>
+                            <nc:IdentificationID>BPD123456</nc:IdentificationID>
+                        </j:OrganizationORIIdentification>
+                        <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                        <lexs:SystemID>BPD123</lexs:SystemID>
+                    </lexs:DataOwnerIdentifier>
+                    <lexs:DataOwnerContact>
+                        <nc:PersonGivenName>George</nc:PersonGivenName>
+                        <nc:PersonMiddleName>P</nc:PersonMiddleName>
+                        <nc:PersonSurName>Burdell</nc:PersonSurName>
+                        <nc:PersonFullName>George P Burdell</nc:PersonFullName>
+                        <nc:ContactEmailID>burdell@bpd.gov</nc:ContactEmailID>
+                        <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                    </lexs:DataOwnerContact>
+                </lexs:DataOwnerMetadata>
+            </lexs:PackageMetadata>
+            <lexs:MatchDetails>
+                <lexs:SnippetText>Police identified yesterday the man fatally shot Sunday night outside Maple Glen Apartments in the 6000 block of Amberwood Road as Tommy Jones 28, of the 5900 block of Hastie Lake Road. Police responding to a report of shots fired about 8:15 p.m. found Jones bleeding from a bullet wound to the head.</lexs:SnippetText>
+            </lexs:MatchDetails>
+        </lexs:SearchResultPackage>
+        <!--=========================================================-->
+        <!--=======================  Package #2  =======================-->
+        <!--=========================================================-->
+        <lexs:SearchResultPackage>
+            <lexs:PackageMetadata>
+                <lexs:DataItemID>123456790</lexs:DataItemID>
+                <lexs:DataItemCompleteIndicator>false</lexs:DataItemCompleteIndicator>
+                <lexs:DataItemContact>
+                    <nc:PersonGivenName>George</nc:PersonGivenName>
+                    <nc:PersonMiddleName>P</nc:PersonMiddleName>
+                    <nc:PersonSurName>Burdell</nc:PersonSurName>
+                    <nc:PersonFullName>George P Burdell</nc:PersonFullName>
+                    <nc:ContactEmailID>burdell@bpd.gov</nc:ContactEmailID>
+                    <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                </lexs:DataItemContact>
+                <lexs:DataItemDate>2001-12-17</lexs:DataItemDate>
+                <lexs:DataItemLEXSVersionNumberText>5.0</lexs:DataItemLEXSVersionNumberText>
+                <lexs:DataItemReferenceID>987654321</lexs:DataItemReferenceID>
+                <lexs:DataItemStatusText>Closed</lexs:DataItemStatusText>
+                <!--=======================  Data Owner Metadata  =======================-->
+                <lexs:DataOwnerMetadata>
+                    <lexs:DataOwnerIdentifier>
+                        <j:OrganizationORIIdentification>
+                            <nc:IdentificationID>BPD123456</nc:IdentificationID>
+                        </j:OrganizationORIIdentification>
+                        <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                        <lexs:SystemID>BPD123</lexs:SystemID>
+                    </lexs:DataOwnerIdentifier>
+                    <lexs:DataOwnerContact>
+                        <nc:PersonGivenName>George</nc:PersonGivenName>
+                        <nc:PersonMiddleName>P</nc:PersonMiddleName>
+                        <nc:PersonSurName>Burdell</nc:PersonSurName>
+                        <nc:PersonFullName>George P Burdell</nc:PersonFullName>
+                        <nc:ContactEmailID>burdell@bpd.gov</nc:ContactEmailID>
+                        <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                    </lexs:DataOwnerContact>
+                </lexs:DataOwnerMetadata>
+            </lexs:PackageMetadata>
+            <!--=======================  Package Attachment Link Mugshot  =======================-->
+            <lexs:AttachmentSummary lexslib:id="PAttachment2">
+                <lexs:AttachmentDescriptionText>Mug shot for Tommy Lee Jones</lexs:AttachmentDescriptionText>
+                <lexs:AttachmentURI>http://www.gtri.org/LEXS/examples/TommyJonesMugshot1.jpg</lexs:AttachmentURI>
+                <lexs:AttachmentViewableIndicator>true</lexs:AttachmentViewableIndicator>
+            </lexs:AttachmentSummary>
+            <!--=======================  Data Submitter  =======================-->
+            <lexs:DataSubmitterIdentifier>
+                <j:OrganizationORIIdentification>
+                    <nc:IdentificationID>ATL123456</nc:IdentificationID>
+                </j:OrganizationORIIdentification>
+                <nc:OrganizationName>ATLANTA PD</nc:OrganizationName>
+                <lexs:SystemID>APD123</lexs:SystemID>
+            </lexs:DataSubmitterIdentifier>
+        </lexs:SearchResultPackage>
+        <!--=========================================================-->
+        <!--=======================  Package #3  =======================-->
+        <!--=========================================================-->
+        <lexs:SearchResultPackage>
+            <lexs:PackageMetadata>
+                <lexs:DataItemID>123456790</lexs:DataItemID>
+                <lexs:DataItemCompleteIndicator>false</lexs:DataItemCompleteIndicator>
+                <lexs:DataItemContact>
+                    <nc:PersonGivenName>George</nc:PersonGivenName>
+                    <nc:PersonMiddleName>P</nc:PersonMiddleName>
+                    <nc:PersonSurName>Burdell</nc:PersonSurName>
+                    <nc:PersonFullName>George P Burdell</nc:PersonFullName>
+                    <nc:ContactEmailID>burdell@bpd.gov</nc:ContactEmailID>
+                    <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                </lexs:DataItemContact>
+                <lexs:DataItemDate>2001-12-17</lexs:DataItemDate>
+                <lexs:DataItemLEXSVersionNumberText>5.0</lexs:DataItemLEXSVersionNumberText>
+                <lexs:DataItemReferenceID>987654321</lexs:DataItemReferenceID>
+                <lexs:DataItemStatusText>Closed</lexs:DataItemStatusText>
+                <!--=======================  Data Owner Metadata  =======================-->
+                <lexs:DataOwnerMetadata>
+                    <lexs:DataOwnerIdentifier>
+                        <j:OrganizationORIIdentification>
+                            <nc:IdentificationID>BPD123456</nc:IdentificationID>
+                        </j:OrganizationORIIdentification>
+                        <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                        <lexs:SystemID>BPD123</lexs:SystemID>
+                    </lexs:DataOwnerIdentifier>
+                    <lexs:DataOwnerContact>
+                        <nc:PersonGivenName>George</nc:PersonGivenName>
+                        <nc:PersonMiddleName>P</nc:PersonMiddleName>
+                        <nc:PersonSurName>Burdell</nc:PersonSurName>
+                        <nc:PersonFullName>George P Burdell</nc:PersonFullName>
+                        <nc:ContactEmailID>burdell@bpd.gov</nc:ContactEmailID>
+                        <nc:OrganizationName>BUFFORD PD</nc:OrganizationName>
+                    </lexs:DataOwnerContact>
+                </lexs:DataOwnerMetadata>
+            </lexs:PackageMetadata>
+            <!--=======================  Digest  =======================-->
+            <lexsdigest:Digest>
+                <lexsdigest:EntityPerson s:id="EPerson1">
+                    <nc:Person s:id="Sub1">
+                        <nc:PersonName>
+                            <nc:PersonGivenName s:id="EPerson1PGN">Tommy</nc:PersonGivenName>
+                            <nc:PersonSurName s:id="EPerson1PSN">Jones</nc:PersonSurName>
+                        </nc:PersonName>
+                        <nc:PersonSSNIdentification xsi:nil="false">
+                            <nc:IdentificationID>333-44-5555</nc:IdentificationID>
+                        </nc:PersonSSNIdentification>
+                    </nc:Person>
+                </lexsdigest:EntityPerson>
+            </lexsdigest:Digest>
+            <!--=======================  Data Submitter  =======================-->
+            <lexs:DataSubmitterIdentifier>
+                <j:OrganizationORIIdentification>
+                    <nc:IdentificationID>ATL123456</nc:IdentificationID>
+                </j:OrganizationORIIdentification>
+                <nc:OrganizationName>ATLANTA PD</nc:OrganizationName>
+                <lexs:SystemID>APD123</lexs:SystemID>
+            </lexs:DataSubmitterIdentifier>
+            <lexs:MatchDetails>
+                <lexs:MatchObjectDetails>
+                    <lexs:MatchDigestEntityReference lexslib:validatingObjectReference="EPerson1"/>
+                    <lexs:MatchDigestElementReference>
+                        <lexslib:DigestObjectReference lexslib:validatingObjectReference="EPerson1PGN"/>
+                        <lexs:QueryMatchText>exact</lexs:QueryMatchText>
+                    </lexs:MatchDigestElementReference>
+                    <lexs:MatchDigestElementReference>
+                        <lexslib:DigestObjectReference lexslib:validatingObjectReference="EPerson1PSN"/>
+                        <lexs:QueryMatchText>exact</lexs:QueryMatchText>
+                    </lexs:MatchDigestElementReference>
+                </lexs:MatchObjectDetails>
+                <lexs:StructuredQueryMatchScorePercent>1</lexs:StructuredQueryMatchScorePercent>
+            </lexs:MatchDetails>
+        </lexs:SearchResultPackage>
+    </lexs:SearchResponseMessage>
+</lexssr:doSearchResponse>

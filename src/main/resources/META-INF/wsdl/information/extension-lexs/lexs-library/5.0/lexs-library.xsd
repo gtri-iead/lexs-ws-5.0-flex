@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document      : $Id: lexs-library.xsd 48185 2016-09-08 22:57:09Z ys34 $
+    Namespace     : xmlns:lexslib="http://lexs.justice.gov/library/5.0"
+    Description   : Library for common LEXS elements Schema
+-->
+<xsd:schema 
+    xmlns:lexslib="http://lexs.justice.gov/library/5.0" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://lexs.justice.gov/library/5.0" 
+    version="TBD">
+        
+    <xsd:annotation>
+        <xsd:documentation>Library for common LEXS elements</xsd:documentation>
+    </xsd:annotation>
+    
+    <xsd:element name="AttachmentSummaryConnectionAbstract" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>A data concept for a mechanism used to link an AttachmentSummary to objects in the Digest and/or Structured Payloads.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="AttachmentSummaryConnection" type="lexslib:AttachmentSummaryConnectionType" substitutionGroup="lexslib:AttachmentSummaryConnectionAbstract">
+        <xsd:annotation>
+            <xsd:documentation>A mechanism used to link an AttachmentSummary to objects in the Digest and/or Structured Payloads.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>    
+    <xsd:element name="AttachmentSummaryReference" type="lexslib:ValidatingObjectReferenceType">
+        <xsd:annotation>
+            <xsd:documentation>A summary of an attachment that can be linked to Digest or Structured Payload objects.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="AttachmentSummaryConnectionDescriptionText" type="xsd:string" nillable="true">
+        <xsd:annotation>
+            <xsd:documentation>A description of the attachment summary connection.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>    
+    <xsd:element name="AttachmentSummaryConnectionDomainAttribute" type="lexslib:DomainAttributeType">
+        <xsd:annotation>
+            <xsd:documentation>A placeholder for a Attachment Summary Connection domain attribute. For Value/Pair attributes use lexs:AttributeName and lexs:AttributeValueText elements. For hierarchical data xsd:any structure should be used.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>    
+    <xsd:complexType name="AttachmentSummaryConnectionType">
+        <xsd:annotation>
+            <xsd:appinfo>BUSINESS_RULE must contain at least one DOR or POR. Multiple AttachmentSummaryReferences allow one connection element to link multiple attachments, such as multiple pictures of a person to a person element.</xsd:appinfo>
+            <xsd:documentation>A data type for a mechanism used to link an AttachmentSummary to objects in the Digest and/or Structured Payloads.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="lexslib:AttachmentSummaryReference" maxOccurs="unbounded"/>
+            <xsd:element ref="lexslib:DigestObjectReference" minOccurs="0"/>
+            <xsd:element ref="lexslib:StructuredPayloadObjectReference" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="lexslib:AttachmentSummaryConnectionDescriptionText" minOccurs="0"/>
+            <xsd:element ref="lexslib:AttachmentSummaryConnectionDomainAttribute" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>       
+    <xsd:complexType name="DomainAttributeType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a domain attribute. For Name/Value pair attributes use lexs:AttributeName and lexs:AttributeValueText elements. For hierarchical data xsd:any structure should be used.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="lexslib:AttributeName" minOccurs="0"/>
+            <xsd:element ref="lexslib:AttributeValueText" minOccurs="0"/>
+            <xsd:element ref="lexslib:DomainAttributeDescriptionText" minOccurs="0"/>
+            <xsd:element ref="lexslib:DomainName"/>
+            <xsd:any processContents="lax" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="AttributeName" type="xsd:string" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>A name of a domain attribute. For example, RegionInfo.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="AttributeValueText" type="xsd:string" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>A domain attribute value.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="DomainAttributeDescriptionText" type="xsd:string" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>A domain attribute description text.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="DomainName" type="xsd:string" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>A name of the domain to which this block of information applies, for example, OneDOJ.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="SameAsConnection" type="lexslib:SameAsConnectionType">
+        <xsd:annotation>
+            <xsd:documentation>A mechanism used to indicate that an object in the Digest represents the same object as in a Structured Payload, or that an object in a Structured Payload represents the same object as in a different Structured Payload.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="SameAsConnectionType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a mechanism used to indicate that an object in the Digest represents the same object as in one or more Structured Payloads, or that an object in a Structured Payload represents the same object as in one or more different Structured Payloads.</xsd:documentation>
+            <xsd:appinfo>BUSINESS_RULE must contain at least two child elements (DOR and POR) or (POR and POR).</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="lexslib:DigestObjectReference" minOccurs="0"/>
+            <xsd:element ref="lexslib:StructuredPayloadObjectReference" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="DigestObjectReference" type="lexslib:ValidatingObjectReferenceType">
+        <xsd:annotation>
+            <xsd:documentation>An object in a Digest, which can be a high level object such as a Person or a Vehicle, or a lower level object such as a PersonName.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="ValidatingObjectReferenceType" final="#all">
+        <xsd:annotation>
+            <xsd:documentation>A data type for an object reference that can be validated through standard XML schema validation, where the object being referred to is in the same scope as the referring object.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute ref="lexslib:validatingObjectReference" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="StructuredPayloadObjectReference" type="lexslib:NonValidatingObjectReferenceType">
+        <xsd:annotation>
+            <xsd:documentation>An object in a Structured Payload.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="NonValidatingObjectReferenceType" final="#all">
+        <xsd:annotation>
+            <xsd:documentation>A data type for an object reference that cannot be validated through standard XML schema validation, where the object being referred to is NOT in the same scope as the referring object.  This allows reference to an object that is located within a closed container (for example under lexs:StructuredPayload).</xsd:documentation>
+            <xsd:appinfo>BUSINESS_RULE must have either nonValidatingObjectReference or xpathObjectReference attributes present</xsd:appinfo>
+        </xsd:annotation>
+        <xsd:attribute ref="lexslib:structuredPayloadReference" use="required"/>
+        <xsd:attribute ref="lexslib:nonValidatingObjectReference" use="optional"/>
+        <xsd:attribute ref="lexslib:xpathObjectReference" use="optional"/>
+    </xsd:complexType>
+    <!-- reference to the object that is located within the scope of validation -->
+    <xsd:attribute name="validatingObjectReference" type="xsd:IDREF">
+        <xsd:annotation>
+            <xsd:documentation>An object reference that can be validated through standard XML schema validation, where the object being referred to is in the same scope as the referring object.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+    <!-- reference to the object that is located beyond the scope of validation -->
+    <xsd:attribute name="nonValidatingObjectReference" type="xsd:NCName">
+        <xsd:annotation>
+            <xsd:documentation>An object reference that cannot be validated through standard XML schema validation, where the object being referred to is NOT in the same scope as the referring object.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+    <!-- reference to the object using XPath that is located within Structured Payload and relative to the structured payload root element -->
+    <xsd:attribute name="xpathObjectReference" type="xsd:string">
+        <xsd:annotation>
+            <xsd:documentation>An XPath object reference where the object being referred to is inside StructuredPayload.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+    <!--  Reference to the Structured Payload, validating -->
+    <xsd:attribute name="structuredPayloadReference" type="xsd:IDREF">
+        <xsd:annotation>
+            <xsd:documentation>A Structured Payload.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+    <!-- XML ID  -->
+    <xsd:attribute name="id" type="xsd:ID">
+        <xsd:annotation>
+            <xsd:documentation>An attribute used to define XML IDs for LEXS objects which are used as targets of reference elements.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:attribute>
+</xsd:schema>

@@ -1,0 +1,119 @@
+Frame 500: 94 bytes on wire (752 bits), 49 bytes captured (392 bits) on interface 0
+Null/Loopback
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+Transmission Control Protocol, Src Port: 8080, Dst Port: 52880, Seq: 2864, Ack: 2887, Len: 5
+[4 Reassembled TCP Segments (2868 bytes): #495(805), #497(1460), #498(598), #500(5)]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+        Request Version: HTTP/1.1
+        Status Code: 200
+        Response Phrase: OK
+    Server: Apache-Coyote/1.1\r\n
+    Content-Type: text/xml;charset=utf-8\r\n
+    Transfer-Encoding: chunked\r\n
+    Date: Fri, 11 Nov 2016 21:04:55 GMT\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.184276000 seconds]
+    [Request in frame: 493]
+    HTTP chunked response
+    File Data: 2700 bytes
+eXtensible Markup Language
+    <?xml
+    <S:Envelope
+        xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+        <S:Header>
+            <Action
+                xmlns="http://www.w3.org/2005/08/addressing"
+                xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
+                S:mustUnderstand="1">
+                http://lexs.justice.gov/domainexchange/5.0/domainExchangeResponse
+                </Action>
+            <MessageID
+                xmlns="http://www.w3.org/2005/08/addressing">
+                uuid:07c56a9c-24bd-4586-ab80-a7e841df983c
+                </MessageID>
+            <RelatesTo
+                xmlns="http://www.w3.org/2005/08/addressing">
+                uuid:90287808-b0c8-401d-bd0d-8823d44d5225
+                </RelatesTo>
+            <To
+                xmlns="http://www.w3.org/2005/08/addressing">
+                http://www.w3.org/2005/08/addressing/anonymous
+                </To>
+            </S:Header>
+        <S:Body>
+            <ns10:domainResponse
+                xmlns:ns2="http://docs.oasis-open.org/wsrf/bf-2"
+                xmlns:ns3="http://www.w3.org/2005/08/addressing"
+                xmlns:ns4="http://lexs.justice.gov/meta/5.0"
+                xmlns:ns5="http://www.w3.org/2000/09/xmldsig#"
+                xmlns:ns6="urn:oasis:names:tc:SAML:2.0:metadata"
+                xmlns:ns7="http://www.w3.org/2001/04/xmlenc#"
+                xmlns:ns8="urn:oasis:names:tc:SAML:2.0:assertion"
+                xmlns:ns9="http://lexs.justice.gov/library/5.0"
+                xmlns:ns10="http://lexs.justice.gov/domainexchange/5.0"
+                xmlns:ns11="http://lexs.justice.gov/faults/5.0">
+                <lexs:DomainResponseMessage
+                    xmlns:lexs="http://lexs.justice.gov/lexs/5.0"
+                    xmlns:lexsde="http://lexs.justice.gov/domainexchange/5.0"
+                    xmlns:lexslib="http://lexs.justice.gov/library/5.0"
+                    xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <lexsmeta:MessageMetadata>
+                        <lexsmeta:LEXSVersionNumberText>
+                            5.0
+                            </lexsmeta:LEXSVersionNumberText>
+                        <lexsmeta:MessageDateTime>
+                            2016-06-09T09:30:47Z
+                            </lexsmeta:MessageDateTime>
+                        <lexsmeta:MessageIdentifier>
+                            uuid:01848ada-db84-4f9e-ac46-3d4497a6da1f
+                            </lexsmeta:MessageIdentifier>
+                        <lexsmeta:InResponseToMessageIdentifier>
+                            uuid:01848ada-db84-4f9e-ac46-3d4497a6da0e
+                            </lexsmeta:InResponseToMessageIdentifier>
+                        <lexsmeta:DataSensitivityText>
+                            SBU
+                            </lexsmeta:DataSensitivityText>
+                        </lexsmeta:MessageMetadata>
+                    <lexs:ResponseMetadata>
+                        <lexs:ResultCode>
+                            Success
+                            </lexs:ResultCode>
+                        </lexs:ResponseMetadata>
+                    <lexs:DomainResponseMessageDomainAttribute>
+                        <lexslib:DomainName>
+                            http://www.w3.org/TR/xmlschema-0/
+                            </lexslib:DomainName>
+                        <apo:purchaseOrder
+                            xmlns:apo="http://www.example.com/PO1"
+                            orderDate="1999-10-20">
+                            <apo:shipTo
+                                country="US">
+                                <apo:name>
+                                    Alice Smith
+                                    </apo:name>
+                                <apo:street>
+                                    123 Maple Street
+                                    </apo:street>
+                                </apo:shipTo>
+                            <apo:billTo
+                                country="US">
+                                <apo:name>
+                                    Robert Smith
+                                    </apo:name>
+                                <apo:street>
+                                    8 Oak Avenue
+                                    </apo:street>
+                                </apo:billTo>
+                            <apo:comment>
+                                Hurry, my lawn is going wild
+                                </apo:comment>
+                            </apo:purchaseOrder>
+                        </lexs:DomainResponseMessageDomainAttribute>
+                    </lexs:DomainResponseMessage>
+                </ns10:domainResponse>
+            </S:Body>
+        </S:Envelope>

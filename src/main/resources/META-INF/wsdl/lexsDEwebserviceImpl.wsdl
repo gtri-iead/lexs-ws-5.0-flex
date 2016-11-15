@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document: $Id: lexsDEwebserviceImpl.wsdl 48185 2016-09-08 22:57:09Z ys34 $
+    Description   : Service Endpoint template definition for 
+                    LEXS 5.0 Domain Exchange Web Service
+-->
+<wsdl:definitions
+    targetNamespace="http://lexs.justice.gov/domainexchange/5.0/ws" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:tns="http://lexs.justice.gov/domainexchange/5.0/ws" 
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+        
+    <wsdl:import 
+        namespace="http://lexs.justice.gov/domainexchange/5.0/ws" 
+        location="lexsDEwebserviceIntf.wsdl"/>
+    
+    <wsdl:service name="DEWebService">
+        <wsdl:port name="DEWebServicePort" binding="tns:DEWebServiceSoapBinding">
+            <soap:address location="${TBD}"/>
+        </wsdl:port>
+    </wsdl:service>
+    
+</wsdl:definitions>

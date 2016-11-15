@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document: $Id: lexs-publish-discover.xsd 48185 2016-09-08 22:57:09Z ys34 $
+    Namespace     : xmlns:lexspd="http://lexs.justice.gov/publishdiscover/5.0"
+    Description   : LEXS Publish and Discover Message Format Schema
+-->
+<xsd:schema 
+    xmlns:lexspd="http://lexs.justice.gov/publishdiscover/5.0"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://lexs.justice.gov/publishdiscover/5.0"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="TBD">
+            
+    <xsd:annotation>
+        <xsd:documentation>LEXS Publish Discover Message Format Schema</xsd:documentation>
+    </xsd:annotation>
+    <xsd:element name="doPublish" type="lexspd:doPublishType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS publish (submission to a data repository) method.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="doPublishType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS publish (submission to a data repository) method.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="doPublishAcknowledgedRequest" type="lexspd:doPublishAcknowledgedRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS publish (submission to a data repository) method with a request for acknowledgment.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="doPublishAcknowledgedRequestType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS publish (submission to a data repository) method with a request for acknowledgment.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="doPublishAcknowledgedResponse" type="lexspd:doPublishAcknowledgedResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS response method that acknowledges receipt of a publish message.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="doPublishAcknowledgedResponseType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a LEXS response method that acknowledges receipt of a publish message.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any namespace="##any" processContents="lax"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

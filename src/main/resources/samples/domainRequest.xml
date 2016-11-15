@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lexsde:domainRequest
+        xmlns:lexs="http://lexs.justice.gov/lexs/5.0"
+        xmlns:lexsde="http://lexs.justice.gov/domainexchange/5.0"
+        xmlns:lexslib="http://lexs.justice.gov/library/5.0"
+        xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+        xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/"
+        xmlns:j="http://release.niem.gov/niem/domains/jxdm/5.2/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <lexs:DomainRequestMessage>
+        <lexs:UserAssertion>
+            <lexs:UserID>am123</lexs:UserID>
+            <nc:OrganizationName>APD</nc:OrganizationName>
+        </lexs:UserAssertion>
+        <lexs:DomainRequestMessageDomainAttribute>
+            <lexslib:DomainName>http://www.w3.org/TR/xmlschema-0</lexslib:DomainName>
+            <apo:purchaseOrder xmlns:apo="http://www.example.com/PO1" orderDate="1999-10-20">
+                <apo:shipTo country="US">
+                    <apo:name>Alice Smith</apo:name>
+                    <apo:street>123 Maple Street</apo:street>
+                </apo:shipTo>
+                <apo:billTo country="US">
+                    <apo:name>Robert Smith</apo:name>
+                    <apo:street>8 Oak Avenue</apo:street>
+                </apo:billTo>
+                <apo:comment>Hurry, my lawn is going wild</apo:comment>
+            </apo:purchaseOrder>
+        </lexs:DomainRequestMessageDomainAttribute>
+    </lexs:DomainRequestMessage>
+</lexsde:domainRequest>

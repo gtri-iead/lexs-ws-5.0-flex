@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document      : $Id: lexs-meta.xsd 48185 2016-09-08 22:57:09Z ys34 $
+    Namespace     : xmlns:lexs="http://lexs.justice.gov/meta/5.0"
+    Description   : LEXS Metadata Elements Schema
+-->
+<xsd:schema 
+    xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0"
+    xmlns:lexslib="http://lexs.justice.gov/library/5.0" 
+    xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"    
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://lexs.justice.gov/meta/5.0" 
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified" 
+    version="TBD">
+           
+    <xsd:annotation>
+        <xsd:documentation>Library for common LEXS elements</xsd:documentation>
+    </xsd:annotation>
+    
+    <xsd:import 
+        namespace="http://lexs.justice.gov/library/5.0" 
+        schemaLocation="../../lexs-library/5.0/lexs-library.xsd"/>
+    
+    <xsd:import 
+        namespace="urn:oasis:names:tc:SAML:2.0:assertion" 
+        schemaLocation="../../../external/oasis-open.org/security/saml/v2.0/saml-schema-assertion-2.0.xsd">
+        <xsd:annotation>
+            <xsd:documentation>An assertion schema for SAML V2.0 Assertion namespace.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:import>   
+    <xsd:import 
+        namespace="urn:oasis:names:tc:SAML:2.0:metadata" 
+        schemaLocation="../../../external/oasis-open.org/security/saml/v2.0/saml-schema-metadata-2.0.xsd">
+        <xsd:annotation>
+            <xsd:documentation>An metadata schema for SAML V2.0 Metadata namespace.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:import>
+    <xsd:element name="DataSensitivityText" type="xsd:string" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>An information security classification level (e.g., SBU = Sensitive but Unclassified).  Note that this is different from dissemination criteria, which is included at the Data Item level.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="MessageMetadataType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a set of metadata about a LEXS message.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="lexsmeta:LEXSVersionNumberText"/>
+            <xsd:element ref="lexsmeta:MessageDateTime" minOccurs="0"/>
+            <xsd:element ref="lexsmeta:MessageIdentifier" minOccurs="0"/>
+            <xsd:element ref="lexsmeta:InResponseToMessageIdentifier" minOccurs="0"/>
+            <xsd:element ref="lexsmeta:DataSensitivityText" minOccurs="0"/>
+            <xsd:element ref="lexsmeta:MessageOriginAbstract" minOccurs="0"/>
+            <xsd:element ref="lexsmeta:MessageForwarding" minOccurs="0"/>                    
+            <xsd:element ref="lexsmeta:MessageMetadataDomainAttribute" minOccurs="0" maxOccurs="unbounded"/>            
+        </xsd:sequence>
+    </xsd:complexType> 
+    <xsd:complexType name="UserAssertionSAMLType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a wrapper for a SAML 2.0 User Assertion.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="saml:Assertion">
+                <xsd:annotation>
+                    <xsd:documentation>A SAML assertion is a package of information that supplies zero or more statements made by a SAML authority; SAML authorities are sometimes referred to as asserting parties in discussions of assertion generation and exchange, and system entities that use received assertions are known as relying parties. SAML assertions are usually made about a subject, represented by the "Subject" element. However, the "Subject" element is optional, and other specifications and profiles may utilize the SAML assertion structure to make similar statements without specifying a subject, or possibly specifying the subject in an alternate way. Typically there are a number of service providers that can make use of assertions about a subject in order to control access and provide customized service, and accordingly they become the relying parties of an asserting party called an identity provider. </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="EntityAssertionSAMLType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a wrapper for a SAML 2.0 Entity Assertion.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="md:EntityDescriptor">
+                <xsd:annotation>
+                    <xsd:documentation>SAML metadata is organized around an extensible collection of roles representing common combinations of SAML protocols and profiles supported by system entities. Each role is described by an element derived from the extensible base type of RoleDescriptor. The element contains the metadata for an optionally named group of SAML entities. </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="MessageMetadata" type="lexsmeta:MessageMetadataType" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>Metadata about a LEXS message.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="MessageMetadataDomainAttribute" type="lexslib:DomainAttributeType">
+        <xsd:annotation>
+            <xsd:documentation>A message metadata domain attribute. For name/value pair attributes use lexs:AttributeName and lexs:AttributeValueText elements. For hierarchical data xsd:any structure should be used.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="MessageDateTime" type="xsd:dateTime" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>A date and time when the message was created.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="MessageIdentifier" type="xsd:anyURI" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>An element (whose content is of type xs:anyURI) conveys the [message id] property.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="InResponseToMessageIdentifier" type="xsd:anyURI" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>An element information item contributes one abstract [relationship] property value, in the form of an (IRI, IRI) pair. The content of this element (of type xs:anyURI) conveys the [message id] of the related message.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="MessageOriginAbstract" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>A data concept for an assertion indicating the system that originated a message.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>    
+    <xsd:element name="MessageOriginSAMLIdentifier" type="lexsmeta:EntityAssertionSAMLType" substitutionGroup="lexsmeta:MessageOriginAbstract" >
+        <xsd:annotation>
+            <xsd:documentation>A wrapper for a SAML 2.0 entity assertion.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="DataSubmitterAbstract" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>A data concept for an assertion indicating the organization and system that submitted data.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="DataSubmitterSAMLIdentifier" type="lexsmeta:EntityAssertionSAMLType" substitutionGroup="lexsmeta:DataSubmitterAbstract" >
+        <xsd:annotation>
+            <xsd:documentation>A wrapper for a SAML 2.0 entity assertion.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>   
+    <xsd:element name="LEXSVersionNumberText" type="xsd:string" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>A LEXS version number, for example 5.0.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="UserAssertionAbstract" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>A data concept for a program-specific assertion indicating the user submitting a request.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="UserAttentionToAbstract" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>A data concept for a program-specific assertion indicating the user to whose attention a response should be sent.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="UserAssertionSAML" type="lexsmeta:UserAssertionSAMLType" substitutionGroup="lexsmeta:UserAssertionAbstract">
+        <xsd:annotation>
+            <xsd:documentation>A wrapper for a SAML 2.0 user assertion.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element> 
+    <xsd:element name="UserAttentionToSAML" type="lexsmeta:UserAssertionSAMLType" substitutionGroup="lexsmeta:UserAttentionToAbstract">
+        <xsd:annotation>
+            <xsd:documentation>A wrapper for a SAML 2.0 user assertion.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element> 
+    <!-- FORWARDING -->
+    <xsd:complexType name="MessageForwardingType">
+        <xsd:annotation>
+            <xsd:documentation>A data type for a message forwarding request or response to indicate to an intermediary that the message is to be forwarded to another recipient.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element ref="lexsmeta:MessageOriginAbstract"/>
+            <xsd:element ref="lexsmeta:MessageDestinationAbstract" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="MessageDestinationAbstract" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation>A data concept for an assertion indicating the system that originated a message.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="MessageDestinationSAMLIdentifier" type="lexsmeta:EntityAssertionSAMLType" substitutionGroup="lexsmeta:MessageDestinationAbstract" >
+        <xsd:annotation>
+            <xsd:documentation>A wrapper for a SAML 2.0 entity assertion.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>       
+    <xsd:element name="MessageForwarding" type="lexsmeta:MessageForwardingType" nillable="false">
+        <xsd:annotation>
+            <xsd:documentation>A construct that indicates to an intermediary that the message is to be forwarded to another recipient.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>    
+</xsd:schema>

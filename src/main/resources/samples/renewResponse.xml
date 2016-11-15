@@ -1,0 +1,22 @@
+<wsnt:RenewResponse xmlns:lexs="http://lexs.justice.gov/lexs/5.0" xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/" xmlns:lexsmeta="http://lexs.justice.gov/meta/5.0" xmlns:j="http://release.niem.gov/niem/domains/jxdm/5.2/">
+    <wsnt:TerminationTime>2001-12-17T09:30:47Z</wsnt:TerminationTime>
+    <wsnt:CurrentTime>2001-12-17T09:30:47Z</wsnt:CurrentTime>
+    <lexsmeta:MessageMetadata>
+        <lexsmeta:LEXSVersionNumberText>5.0</lexsmeta:LEXSVersionNumberText>
+        <lexsmeta:MessageDateTime>2015-12-17T09:30:47Z</lexsmeta:MessageDateTime>
+        <lexsmeta:MessageIdentifier>uuid:01848ada-db84-4f9e-ac46-3d4497a6da1f</lexsmeta:MessageIdentifier>
+        <lexsmeta:InResponseToMessageIdentifier>uuid:01848ada-db84-4f9e-ac46-3d4497a6da0e</lexsmeta:InResponseToMessageIdentifier>
+        <lexsmeta:DataSensitivityText>SBU</lexsmeta:DataSensitivityText>
+        <!--=======================  Message Origin  =======================-->
+        <lexs:MessageOriginIdentifier>
+            <j:OrganizationORIIdentification>
+                <nc:IdentificationID>ATL123456</nc:IdentificationID>
+            </j:OrganizationORIIdentification>
+            <nc:OrganizationName>ATLANTA PD</nc:OrganizationName>
+            <lexs:SystemID>APD123</lexs:SystemID>
+        </lexs:MessageOriginIdentifier>
+    </lexsmeta:MessageMetadata>
+    <lexs:ResponseMetadata>
+        <lexs:ResultCode>Success</lexs:ResultCode>
+    </lexs:ResponseMetadata>
+</wsnt:RenewResponse>
