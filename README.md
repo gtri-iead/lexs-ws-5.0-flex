@@ -61,10 +61,10 @@ can deploy on your web application server.
 
 How to view WSDLs on the Webserver
 ================================================================================
-http://<server_name>:8080/lexs-ws-jaxws-service/services/de?wsdl
-http://<server_name>:8080/lexs-ws-jaxws-service/services/pd?wsdl
-http://<server_name>:8080/lexs-ws-jaxws-service/services/sr?wsdl
-http://<server_name>:8080/lexs-ws-jaxws-service/services/snsm?wsdl
+- http://<server_name>:8080/lexs-ws-jaxws-service/services/de?wsdl
+- http://<server_name>:8080/lexs-ws-jaxws-service/services/pd?wsdl
+- http://<server_name>:8080/lexs-ws-jaxws-service/services/sr?wsdl
+- http://<server_name>:8080/lexs-ws-jaxws-service/services/snsm?wsdl
 
 To Test
 ================================================================================
